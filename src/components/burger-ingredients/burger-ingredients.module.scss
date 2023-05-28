@@ -1,1 +1,32 @@
 /* Стили для BurgerIngredients */
+.tabs {
+  display: flex;
+  max-width: 600px;
+}
+
+.components {
+  max-width: 600px;
+  max-height: 756px;
+  overflow-y: scroll;
+}
+
+.components::-webkit-scrollbar {
+  width: 8px;
+}
+
+.components::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+
+.components::-webkit-scrollbar-thumb {
+  background-color: #8585ad;
+}
+
+.listElements {
+  list-style: none;
+  padding: 0 0 0 16px;
+  display: flex;
+  column-gap: 24px;
+  margin: 0;
+  flex-wrap: wrap;
+}

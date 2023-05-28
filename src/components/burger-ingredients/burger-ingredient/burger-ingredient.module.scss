@@ -1,0 +1,17 @@
+.element {
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.price {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+}

@@ -1,6 +1,6 @@
-import AppStyles from './app.module.scss';
-import AppHeader from '../app-header/app-header';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
+import AppStyles from "./app.module.scss";
+import AppHeader from "../app-header/app-header";
+import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 
 function App() {
   return (
