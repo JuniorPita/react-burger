@@ -4,8 +4,8 @@ import BurgerIngredient from "./burger-ingredient/burger-ingredient";
 import { data } from "../../utils/data";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
-function BurgerIngredients() {
-  const [currentValue, setCurrentValue] = useState("one");
+const BurgerIngredients = () => {
+  const [currentValue, setCurrentValue] = useState("");
 
   return (
     <section className={burgerIngredientsStyles.burgerIngredients}>
@@ -13,25 +13,25 @@ function BurgerIngredients() {
 
       <div className={burgerIngredientsStyles.burgerIngredients__tabs}>
         <Tab
-          value="bun"
+          value="Булки"
           active={currentValue === "bun"}
-          onClick={setCurrentValue}
+          onClick={() => setCurrentValue("bun")}
         >
           Булки
         </Tab>
 
         <Tab
-          value="sauce"
+          value="Соусы"
           active={currentValue === "sauce"}
-          onClick={setCurrentValue}
+          onClick={() => setCurrentValue("sauce")}
         >
           Соусы
         </Tab>
 
         <Tab
-          value="main"
+          value="Начинки"
           active={currentValue === "main"}
-          onClick={setCurrentValue}
+          onClick={() => setCurrentValue("main")}
         >
           Начинки
         </Tab>
@@ -73,6 +73,6 @@ function BurgerIngredients() {
       </div>
     </section>
   );
-}
+};
 
 export default BurgerIngredients;

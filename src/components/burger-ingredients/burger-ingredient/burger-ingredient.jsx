@@ -5,7 +5,7 @@ import {
 import burgerIngredientStyles from "./burger-ingredient.module.scss";
 import PropTypes from "prop-types";
 
-function BurgerIngredient({ name, price, image }) {
+const BurgerIngredient = ({ name, price, image }) => {
   return (
     <li className={burgerIngredientStyles.element}>
       <Counter count={1} size="default" extraClass="m-1" />
@@ -23,7 +23,7 @@ function BurgerIngredient({ name, price, image }) {
       </p>
     </li>
   );
-}
+};
 
 BurgerIngredient.propTypes = {
   name: PropTypes.string.isRequired,
