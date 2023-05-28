@@ -1,9 +1,9 @@
-import appHeaderStyles from "./app-header.module.scss";
-import { BurgerIcon, ListIcon, Logo, ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import appHeaderStyles from './app-header.module.scss';
+import { BurgerIcon, ListIcon, Logo, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 function AppHeader(): JSX.Element {
   return (
-    <div className={appHeaderStyles.header}>
+    <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
         <ul className={appHeaderStyles.nav__list}>
           <li className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__firstBlock}`}>
@@ -26,7 +26,7 @@ function AppHeader(): JSX.Element {
           <p className="text text_type_main-default text_color_inactive ml-2">Личный кабинет</p>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }
 
