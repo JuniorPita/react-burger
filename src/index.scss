@@ -1,0 +1,102 @@
+/* Импортирование шрифтов */
+@import "./fonts";
+
+/* Инициализация переменных */
+@import "./variables";
+
+/* Сбрасывание изначальных стилей */
+* {
+  border: var(--zeroValue);
+  padding: var(--zeroValue);
+  margin: var(--zeroValue);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  &:before,
+  &:after {
+    @extend *;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-family);
+}
+
+html,
+body {
+  width: var(--hundredPercents);
+  height: var(--hundredPercents);
+  font-size: 14px;
+  -webkit-text-size-adjust: var(--hundredPercents);
+  -moz-text-size-adjust: var(--hundredPercents);
+  -ms-text-size-adjust: var(--hundredPercents);
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  display: block;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:visited {
+    @extend a;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    padding: var(--zeroValue);
+    bottom: var(--zeroValue);
+  }
+}
+
+input::ms-clear {
+  display: none;
+}
+
+img {
+  max-width: var(--hundredPercents);
+  height: auto;
+  vertical-align: top;
+}
