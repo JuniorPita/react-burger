@@ -1,10 +1,10 @@
 import React from 'react';
-import './app.scss';
+import AppStyles from './app.module.scss';
 import AppHeader from '../app-header/app-header';
 
 function App() {
   return (
-    <div className="App">
+    <div className={AppStyles.App}>
       <AppHeader />
     </div>
   );
