@@ -1,21 +1,21 @@
 .header {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 40px;
+  width: 100%;
+  background-color: #1c1c21;
 
   .nav {
     width: 1280px;
     display: flex;
     justify-content: stretch;
     align-items: center;
-    background-color: #1c1c21;
+    padding: 16px 50px;
 
     &__list {
       display: flex;
-      flex-basis: 100%;
-      justify-content: stretch;
       align-items: center;
+      flex-basis: 35%;
+      column-gap: 40px;
 
       &Item {
         display: flex;
@@ -23,18 +23,14 @@
       }
     }
 
-    &__firstBlock,
-    &__secondBlock {
-      flex-basis: 15%;
-    }
-
     &__logo {
       justify-content: center;
-      flex-basis: 40%;
+      flex-basis: 30%;
     }
 
     &__profile {
-      flex-basis: 30%;
+      justify-content: flex-end;
+      flex-basis: 35%;
     }
   }
 }

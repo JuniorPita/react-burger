@@ -13,20 +13,18 @@ function AppHeader(): JSX.Element {
 
           <li className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__secondBlock}`}>
             <ListIcon type="secondary" />
-            <a href="#" className="text text_type_main-default text_color_inactive ml-2">Лента заказов</a>
-          </li>
-
-          <li className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__logo}`}>
-            <a href="#">
-              <Logo />
-            </a>
-          </li>
-
-          <li className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__profile}`}>
-            <ProfileIcon type="secondary" />
-            <p className="text text_type_main-default text_color_inactive ml-2">Личный кабинет</p>
+            <p className="text text_type_main-default text_color_inactive ml-2">Лента заказов</p>
           </li>
         </ul>
+
+        <div className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__logo}`}>
+          <Logo />
+        </div>
+
+        <div className={`${appHeaderStyles.nav__listItem} ${appHeaderStyles.nav__profile}`}>
+          <ProfileIcon type="secondary" />
+          <p className="text text_type_main-default text_color_inactive ml-2">Личный кабинет</p>
+        </div>
       </nav>
     </div>
   );
