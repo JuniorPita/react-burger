@@ -1,32 +1,38 @@
 /* Стили для BurgerIngredients */
-.tabs {
-  display: flex;
-  max-width: 600px;
-}
+.burgerIngredients {
+  &__tabs {
+    display: flex;
+    max-width: 600px;
+  }
 
-.components {
-  max-width: 600px;
-  max-height: 756px;
-  overflow-y: scroll;
-}
+  &__components {
+    max-width: 600px;
+    max-height: 750px;
+    overflow-y: scroll;
 
-.components::-webkit-scrollbar {
-  width: 8px;
-}
+    &::-webkit-scrollbar-track {
+      background: #2f2f37;
+    }
 
-.components::-webkit-scrollbar-track {
-  background: #2f2f37;
-}
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
 
-.components::-webkit-scrollbar-thumb {
-  background-color: #8585ad;
-}
+    &::-webkit-scrollbar-thumb {
+      background-color: #8585ad;
+      border-radius: 8px;
 
-.listElements {
-  list-style: none;
-  padding: 0 0 0 16px;
-  display: flex;
-  column-gap: 24px;
-  margin: 0;
-  flex-wrap: wrap;
+      &:hover {
+        background-color: #6b6b82;
+      }
+    }
+
+    &_list {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 24px;
+      padding-left: 16px;
+      margin: 0;
+    }
+  }
 }
