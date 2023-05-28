@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+
+  .nav {
+    width: 1280px;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    background-color: #1c1c21;
+
+    &__list {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: stretch;
+      align-items: center;
+
+      &Item {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &__firstBlock,
+    &__secondBlock {
+      flex-basis: 15%;
+    }
+
+    &__logo {
+      justify-content: center;
+      flex-basis: 40%;
+    }
+
+    &__profile {
+      flex-basis: 30%;
+    }
+  }
+}
