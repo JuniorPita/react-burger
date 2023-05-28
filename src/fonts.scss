@@ -1,0 +1,11 @@
+/* Инициализация шрифтов "JetBrains Mono" */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../src/fonts/JetBrainsMono-Regular.woff2") format("woff2"),
+    url("../src/fonts/JetBrainsMono-Regular.woff") format("woff"),
+    url("../src/fonts/JetBrainsMono-Regular.ttf") format("ttf"),
+    url("../src/fonts/JetBrainsMono-Regular.otf") format("otf");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
