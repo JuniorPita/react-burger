@@ -10,20 +10,20 @@
     max-height: 750px;
     overflow-y: scroll;
 
-    &::-webkit-scrollbar-track {
-      background: #2f2f37;
-    }
-
     &::-webkit-scrollbar {
       width: 6px;
-    }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #8585ad;
-      border-radius: 8px;
+      &-track {
+        background: #2f2f37;
+      }
 
-      &:hover {
-        background-color: #6b6b82;
+      &-thumb {
+        background-color: #8585ad;
+        border-radius: 8px;
+
+        &:hover {
+          background-color: #6b6b82;
+        }
       }
     }
 
