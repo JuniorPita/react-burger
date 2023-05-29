@@ -1,3 +1,4 @@
+/* Стили для App */
 .app {
   margin: 0 auto;
   padding: 0;
@@ -5,6 +6,7 @@
   .main {
     display: flex;
     justify-content: center;
+    column-gap: 60px;
     width: 1280px;
     margin-left: 350px;
   }
