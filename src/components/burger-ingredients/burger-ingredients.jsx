@@ -42,9 +42,9 @@ const BurgerIngredients = () => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
-            if (object.type === "bun") {
-              return <BurgerIngredient key={object._id} {...object} />;
+          {data.map((obj) => {
+            if (obj.type === "bun") {
+              return <BurgerIngredient key={obj._id} {...obj} />;
             }
           })}
         </ul>
@@ -53,9 +53,9 @@ const BurgerIngredients = () => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
-            if (object.type === "sauce") {
-              return <BurgerIngredient key={object._id} {...object} />;
+          {data.map((obj) => {
+            if (obj.type === "sauce") {
+              return <BurgerIngredient key={obj._id} {...obj} />;
             }
           })}
         </ul>
@@ -64,9 +64,9 @@ const BurgerIngredients = () => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
-            if (object.type === "main") {
-              return <BurgerIngredient key={object._id} {...object} />;
+          {data.map((obj) => {
+            if (obj.type === "main") {
+              return <BurgerIngredient key={obj._id} {...obj} />;
             }
           })}
         </ul>

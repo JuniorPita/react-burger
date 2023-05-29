@@ -7,17 +7,17 @@ import PropTypes from "prop-types";
 
 const BurgerIngredient = ({ name, price, image }) => {
   return (
-    <li className={burgerIngredientStyles.burgerIngridientElement}>
+    <li className={burgerIngredientStyles.burgerIngredientElement}>
       <Counter count={1} size="default" extraClass="m-1" />
       <img src={image} alt={name} />
 
-      <div className={burgerIngredientStyles.burgerIngridientElement__price}>
+      <div className={burgerIngredientStyles.burgerIngredientElement__price}>
         <p className="text text_type_digits-default mt-1 mb-1">{price}</p>
         <CurrencyIcon type="primary" />
       </div>
 
       <p
-        className={`text text_type_main-default pb-8 ${burgerIngredientStyles.burgerIngridientElement__title}`}
+        className={`text text_type_main-default pb-8 ${burgerIngredientStyles.burgerIngredientElement__title}`}
       >
         {name}
       </p>
