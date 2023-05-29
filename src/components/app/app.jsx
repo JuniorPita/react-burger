@@ -1,14 +1,14 @@
-import AppStyles from "./app.module.scss";
+import appStyles from "./app.module.scss";
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 const App = () => {
   return (
-    <div className={AppStyles.app}>
+    <div className={appStyles.app}>
       <AppHeader />
 
-      <main className={AppStyles.main}>
+      <main className={appStyles.main}>
         <BurgerIngredients />
         <BurgerConstructor />
       </main>
