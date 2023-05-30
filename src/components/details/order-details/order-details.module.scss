@@ -1,0 +1,22 @@
+/* Стили для OrderDetails */
+.orderDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  &__icon {
+    width: 120px;
+    height: 120px;
+    background-image: url(../../../images/order.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      scale: calc(100% + 2%);
+    }
+  }
+}

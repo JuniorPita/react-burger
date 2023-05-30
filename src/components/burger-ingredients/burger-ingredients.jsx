@@ -1,11 +1,26 @@
 import { useState } from "react";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import burgerIngredientsStyles from "./burger-ingredients.module.scss";
 import BurgerIngredient from "./burger-ingredient/burger-ingredient";
-import { data } from "../../utils/data";
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import PropTypes from "prop-types";
+import IngredientDetails from "../details/ingredient-details/ingredient-details";
+import Modal from "../modal/modal";
 
-const BurgerIngredients = () => {
+const BurgerIngredients = ({ elements }) => {
   const [currentValue, setCurrentValue] = useState("");
+  const [currentIngredient, setCurrentIngredient] = useState({});
+  const [openModalWindow, setOpenModalWindow] = useState(false);
+
+  const productListTitles = ["Булки", "Соусы", "Начинки"];
+
+  const showModalWindow = (element) => {
+    setOpenModalWindow(true);
+    setCurrentIngredient(element);
+  };
+
+  const hideModalWindow = () => {
+    setOpenModalWindow(false);
+  };
 
   return (
     <section className={burgerIngredientsStyles.burgerIngredients}>
@@ -14,65 +29,99 @@ const BurgerIngredients = () => {
       <div className={burgerIngredientsStyles.burgerIngredients__tabs}>
         <Tab
           value="Булки"
-          active={currentValue === "bun"}
-          onClick={() => setCurrentValue("bun")}
+          active={currentValue === "buns"}
+          onClick={() => setCurrentValue("buns")}
         >
-          Булки
+          {productListTitles[0]}
         </Tab>
 
         <Tab
           value="Соусы"
-          active={currentValue === "sauce"}
-          onClick={() => setCurrentValue("sauce")}
+          active={currentValue === "sauces"}
+          onClick={() => setCurrentValue("sauces")}
         >
-          Соусы
+          {productListTitles[1]}
         </Tab>
 
         <Tab
           value="Начинки"
-          active={currentValue === "main"}
-          onClick={() => setCurrentValue("main")}
+          active={currentValue === "fillings"}
+          onClick={() => setCurrentValue("fillings")}
         >
-          Начинки
+          {productListTitles[2]}
         </Tab>
       </div>
 
       <div className={burgerIngredientsStyles.burgerIngredients__components}>
-        <h2 className="text text_type_main-medium mt-10 mb-6">Булки</h2>
+        <h2 className="text text_type_main-medium mt-10 mb-6">
+          {productListTitles[0]}
+        </h2>
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
+          {elements.map((object) => {
             if (object.type === "bun") {
-              return <BurgerIngredient key={object._id} {...object} />;
+              return (
+                <BurgerIngredient
+                  key={object._id}
+                  {...object}
+                  openModalWindow={() => showModalWindow(object)}
+                />
+              );
             }
           })}
         </ul>
 
-        <h2 className="text text_type_main-medium mt-10 mb-6">Соусы</h2>
+        <h2 className="text text_type_main-medium mt-10 mb-6">
+          {productListTitles[1]}
+        </h2>
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
+          {elements.map((object) => {
             if (object.type === "sauce") {
-              return <BurgerIngredient key={object._id} {...object} />;
+              return (
+                <BurgerIngredient
+                  key={object._id}
+                  {...object}
+                  openModalWindow={() => showModalWindow(object)}
+                />
+              );
             }
           })}
         </ul>
 
-        <h2 className="text text_type_main-medium mt-10 mb-6">Начинки</h2>
+        <h2 className="text text_type_main-medium mt-10 mb-6">
+          {productListTitles[2]}
+        </h2>
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {data.map((object) => {
+          {elements.map((object) => {
             if (object.type === "main") {
-              return <BurgerIngredient key={object._id} {...object} />;
+              return (
+                <BurgerIngredient
+                  key={object._id}
+                  {...object}
+                  openModalWindow={() => showModalWindow(object)}
+                />
+              );
             }
           })}
         </ul>
       </div>
+
+      {openModalWindow && (
+        <Modal onCloseModal={hideModalWindow}>
+          <IngredientDetails currentElement={currentIngredient} />
+        </Modal>
+      )}
     </section>
   );
+};
+
+BurgerIngredients.propTypes = {
+  elements: PropTypes.array.isRequired,
 };
 
 export default BurgerIngredients;

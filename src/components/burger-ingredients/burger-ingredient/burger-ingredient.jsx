@@ -5,19 +5,22 @@ import {
 import burgerIngredientStyles from "./burger-ingredient.module.scss";
 import PropTypes from "prop-types";
 
-const BurgerIngredient = ({ name, price, image }) => {
+const BurgerIngredient = ({ name, price, image, openModalWindow }) => {
   return (
-    <li className={burgerIngredientStyles.burgerIngredientElement}>
+    <li
+      className={burgerIngredientStyles.burgerIngredient}
+      onClick={openModalWindow}
+    >
       <Counter count={1} size="default" extraClass="m-1" />
       <img src={image} alt={name} />
 
-      <div className={burgerIngredientStyles.burgerIngredientElement__price}>
+      <div className={burgerIngredientStyles.burgerIngredient__price}>
         <p className="text text_type_digits-default mt-1 mb-1">{price}</p>
         <CurrencyIcon type="primary" />
       </div>
 
       <p
-        className={`text text_type_main-default pb-8 ${burgerIngredientStyles.burgerIngredientElement__title}`}
+        className={`text text_type_main-default pb-8 ${burgerIngredientStyles.burgerIngredient__title}`}
       >
         {name}
       </p>
@@ -27,16 +30,9 @@ const BurgerIngredient = ({ name, price, image }) => {
 
 BurgerIngredient.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  proteins: PropTypes.number.isRequired,
-  fat: PropTypes.number.isRequired,
-  carbohydrates: PropTypes.number.isRequired,
-  calories: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  image_mobile: PropTypes.string.isRequired,
-  image_large: PropTypes.string.isRequired,
-  __v: PropTypes.number.isRequired,
-}.isRequired;
+  openModalWindow: PropTypes.func.isRequired,
+};
 
 export default BurgerIngredient;
