@@ -10,17 +10,7 @@ const App = () => {
   useEffect(() => {
     const getInformation = async () => {
       return await fetch(UrlApiAdress)
-        .then((result) => {
-          if (result.ok) {
-            return result.json();
-          }
-
-          const somethingWentWrong = new Promise.reject(
-            `Упс, ошибка: ${result.status}`
-          );
-
-          return somethingWentWrong;
-        })
+        .then((result) => result.json())
         .then((info) => setElements(info.data))
         .catch((error) => new Error(`Уловил ошибку: ${error}`));
     };
