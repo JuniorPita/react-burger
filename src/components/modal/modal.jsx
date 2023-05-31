@@ -23,7 +23,7 @@ const Modal = ({ children, onCloseModal }) => {
   }, []);
 
   return createPortal(
-    <ModalOverlay onCloseModal={onCloseModal}>
+    <>
       <div
         className={modalStyles.modal}
         onClick={(event) => event.stopPropagation()}
@@ -34,7 +34,8 @@ const Modal = ({ children, onCloseModal }) => {
 
         {children}
       </div>
-    </ModalOverlay>,
+      <ModalOverlay onCloseModal={onCloseModal} />
+    </>,
     modalBox
   );
 };

@@ -1,11 +1,12 @@
 import modalOverlayStyles from "./modal-overlay.module.scss";
 import PropTypes from "prop-types";
 
-const ModalOverlay = ({ children, onCloseModal }) => {
+const ModalOverlay = ({ onCloseModal }) => {
   return (
-    <div className={modalOverlayStyles.modalOverlay} onClick={onCloseModal}>
-      {children}
-    </div>
+    <div
+      className={modalOverlayStyles.modalOverlay}
+      onClick={onCloseModal}
+    ></div>
   );
 };
 
