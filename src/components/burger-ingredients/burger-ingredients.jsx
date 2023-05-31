@@ -5,6 +5,7 @@ import BurgerIngredient from "./burger-ingredient/burger-ingredient";
 import PropTypes from "prop-types";
 import IngredientDetails from "../details/ingredient-details/ingredient-details";
 import Modal from "../modal/modal";
+import IngredientPropTypes from "../../utils/Ingredient-prop-types";
 
 const BurgerIngredients = ({ elements }) => {
   const [currentValue, setCurrentValue] = useState("");
@@ -21,6 +22,10 @@ const BurgerIngredients = ({ elements }) => {
   const hideModalWindow = () => {
     setOpenModalWindow(false);
   };
+
+  const buns = elements.filter((element) => element.type === "bun");
+  const mains = elements.filter((element) => element.type === "main");
+  const sauces = elements.filter((element) => element.type === "sauce");
 
   return (
     <section className={burgerIngredientsStyles.burgerIngredients}>
@@ -45,8 +50,8 @@ const BurgerIngredients = ({ elements }) => {
 
         <Tab
           value="Начинки"
-          active={currentValue === "fillings"}
-          onClick={() => setCurrentValue("fillings")}
+          active={currentValue === "mains"}
+          onClick={() => setCurrentValue("mains")}
         >
           {productListTitles[2]}
         </Tab>
@@ -59,16 +64,14 @@ const BurgerIngredients = ({ elements }) => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {elements.map((object) => {
-            if (object.type === "bun") {
-              return (
-                <BurgerIngredient
-                  key={object._id}
-                  {...object}
-                  openModalWindow={() => showModalWindow(object)}
-                />
-              );
-            }
+          {buns.map((bun) => {
+            return (
+              <BurgerIngredient
+                key={bun._id}
+                {...bun}
+                openModalWindow={() => showModalWindow(bun)}
+              />
+            );
           })}
         </ul>
 
@@ -78,16 +81,14 @@ const BurgerIngredients = ({ elements }) => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {elements.map((object) => {
-            if (object.type === "sauce") {
-              return (
-                <BurgerIngredient
-                  key={object._id}
-                  {...object}
-                  openModalWindow={() => showModalWindow(object)}
-                />
-              );
-            }
+          {mains.map((main) => {
+            return (
+              <BurgerIngredient
+                key={main._id}
+                {...main}
+                openModalWindow={() => showModalWindow(main)}
+              />
+            );
           })}
         </ul>
 
@@ -97,16 +98,14 @@ const BurgerIngredients = ({ elements }) => {
         <ul
           className={burgerIngredientsStyles.burgerIngredients__components_list}
         >
-          {elements.map((object) => {
-            if (object.type === "main") {
-              return (
-                <BurgerIngredient
-                  key={object._id}
-                  {...object}
-                  openModalWindow={() => showModalWindow(object)}
-                />
-              );
-            }
+          {sauces.map((sauce) => {
+            return (
+              <BurgerIngredient
+                key={sauce._id}
+                {...sauce}
+                openModalWindow={() => showModalWindow(sauce)}
+              />
+            );
           })}
         </ul>
       </div>
@@ -121,7 +120,7 @@ const BurgerIngredients = ({ elements }) => {
 };
 
 BurgerIngredients.propTypes = {
-  elements: PropTypes.array.isRequired,
+  elements: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default BurgerIngredients;

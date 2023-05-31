@@ -2,6 +2,7 @@ import mainPageStyles from "./main-page.module.scss";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import PropTypes from "prop-types";
+import IngredientPropTypes from "../../utils/Ingredient-prop-types";
 
 const MainPage = ({ elements }) => {
   return (
@@ -13,7 +14,7 @@ const MainPage = ({ elements }) => {
 };
 
 MainPage.propTypes = {
-  elements: PropTypes.array.isRequired,
+  elements: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default MainPage;

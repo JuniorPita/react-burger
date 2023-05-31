@@ -8,6 +8,7 @@ import burgerConstructorStyles from "./burger-constructor.module.scss";
 import Modal from "../modal/modal";
 import PropTypes from "prop-types";
 import OrderDetails from "../details/order-details/order-details";
+import IngredientPropTypes from "../../utils/Ingredient-prop-types";
 
 const BurgerConstructor = ({ elements }) => {
   const [openModalWindow, setOpenModalWindow] = useState(false);
@@ -106,7 +107,7 @@ const BurgerConstructor = ({ elements }) => {
 };
 
 BurgerConstructor.propTypes = {
-  elements: PropTypes.array.isRequired,
+  elements: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default BurgerConstructor;

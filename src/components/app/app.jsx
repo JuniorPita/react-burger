@@ -2,26 +2,60 @@ import { useState, useEffect } from "react";
 import appStyles from "./app.module.scss";
 import AppHeader from "../app-header/app-header";
 import MainPage from "../main-page/main-page";
+import getIngredients from "../../utils/burger-api";
 
 const App = () => {
-  const UrlApiAdress = "https://norma.nomoreparties.space/api/ingredients";
-  const [elements, setElements] = useState([]);
+  const [burgerIngredients, setBurgerIngredients] = useState({
+    success: false,
+    data: [],
+  });
+  const [error, setError] = useState({
+    hasError: null,
+    message: null,
+  });
+
+  const { success, data } = burgerIngredients;
+  const { hasError, message } = error;
 
   useEffect(() => {
-    const getInformation = async () => {
-      return await fetch(UrlApiAdress)
-        .then((result) => result.json())
-        .then((info) => setElements(info.data))
-        .catch((error) => new Error(`Уловил ошибку: ${error}`));
-    };
+    getIngredients().then((data) => {
+      setBurgerIngredients((currentState) => {
+        const newState = {
+          ...currentState,
+          success: data.success,
+          data: data.data,
+        };
 
-    getInformation();
+        return newState;
+      });
+
+      setError((currentState) => {
+        const newState = {
+          ...currentState,
+          hasError: true,
+          message: error.message,
+        };
+
+        return newState;
+      });
+    });
   }, []);
 
   return (
     <div className={appStyles.app}>
       <AppHeader />
-      <MainPage elements={elements} />
+
+      {success && (
+        <>
+          <MainPage elements={data} />
+        </>
+      )}
+
+      {!success && hasError && (
+        <>
+          <div>{message}</div>
+        </>
+      )}
     </div>
   );
 };
