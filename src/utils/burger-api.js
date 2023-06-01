@@ -1,15 +1,15 @@
 import checkResponse from "./check-response";
 
 const getIngredients = async () => {
-  const urlApiForBurgers = "https://norma.nomoreparties.space/api/ingredients";
+  try {
+    const urlApiForBurgers =
+      "https://norma.nomoreparties.space/api/ingredients";
+    const result = await fetch(urlApiForBurgers).then(checkResponse);
 
-  const result = await fetch(urlApiForBurgers);
-
-  checkResponse(result);
-
-  const burgerIngredients = await result.json();
-
-  return burgerIngredients;
+    return result;
+  } catch (error) {
+    throw new Error(`Возникла ошибка: ${error}`);
+  }
 };
 
 export default getIngredients;
