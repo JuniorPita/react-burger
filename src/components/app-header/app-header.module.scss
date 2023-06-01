@@ -1,0 +1,42 @@
+/* Стили для AppHeader */
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(28, 28, 33, 0.9);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 100;
+
+  .nav {
+    width: 1280px;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding: 16px 10px;
+
+    &__list {
+      display: flex;
+      align-items: center;
+      flex-basis: 35%;
+      column-gap: 40px;
+
+      &Item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+
+    &__logo {
+      justify-content: center;
+      flex-basis: 30%;
+    }
+
+    &__profile {
+      justify-content: flex-end;
+      flex-basis: 35%;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+/* Инициализация миксинов */
+@import "../../styles/mixins";
+
+/* Стили для BurgerConstructor */
+.burgerConstructor {
+  min-width: 600px;
+  margin-top: 100px;
+
+  &__topElement {
+    margin-bottom: 16px;
+    padding-left: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 500px;
+    overflow-y: scroll;
+    @include scrollBar;
+
+    &_item {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      min-width: 560px;
+    }
+  }
+
+  &__order {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    margin-top: 40px;
+    margin-left: 190px;
+
+    &_info {
+      display: flex;
+      column-gap: 10px;
+
+      &__icon {
+        width: 36px;
+        height: 36px;
+        background-image: url(../../images/diamond.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+}

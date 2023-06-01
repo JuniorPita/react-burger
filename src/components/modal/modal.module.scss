@@ -1,0 +1,21 @@
+/* Стили для Modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  border-radius: 40px;
+  background-color: #1c1c21;
+  z-index: 1000;
+
+  &__btnClose {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
+}
