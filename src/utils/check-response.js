@@ -1,11 +1,7 @@
 const checkResponse = (result) => {
-  if (!result.ok) {
-    const errorMessage = `Упс, прилетела ошибка: ${result.status}`;
-
-    throw new Error(errorMessage);
-  }
-
-  return false;
+  return result.ok
+    ? result.json()
+    : result.json().then((error) => new Promise.reject(error));
 };
 
 export default checkResponse;
