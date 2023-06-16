@@ -15,13 +15,13 @@ const BurgerIngredient = (props) => {
   const currentBun = useSelector((store) => store.burgerIngredients.bun);
   const buns = currentBun.slice(currentBun.length - 1);
 
-  let countIngredients = useSelector(
+  const countIngredients = useSelector(
     (store) =>
       store.burgerIngredients.ingredients.filter(
         (ingredient) => ingredient._id === _id
       ).length
   );
-  let countBuns =
+  const countBuns =
     buns.filter((ingredient) => ingredient._id === _id).length * 2;
 
   const amount = type === "bun" ? countBuns : countIngredients;

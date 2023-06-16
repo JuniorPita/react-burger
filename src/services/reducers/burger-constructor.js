@@ -1,11 +1,10 @@
 /* Общие импорты */
 import {
   ADD_INGREDIENT,
-  ADD_BUN,
   DELETE_INGREDIENT,
   MOVE_INGREDIENT,
-  CLEAR_CONSTRUCTOR,
-} from "../actions";
+} from "../actions/current-ingredient-action";
+import { CLEAR_CONSTRUCTOR, ADD_BUN } from "../actions/constructor-action";
 
 const basicState = {
   ingredients: [],

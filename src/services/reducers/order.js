@@ -1,9 +1,9 @@
 /* Общие импорты */
 import {
   GET_NUMBER_ORDER,
-  GET_NUMBER_ORDER_SUCCESS,
   GET_NUMBER_ORDER_FAILED,
-} from "../actions";
+  GET_NUMBER_ORDER_SUCCESS,
+} from "../actions/order-action";
 
 const baseState = {
   order: 0,

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getIngredientInfo,
   deleteIngredientInfo,
-} from "../../services/actions";
+} from "../../services/actions/current-ingredient-action";
 
 /* Стили */
 import burgerIngredientsStyles from "./burger-ingredients.module.scss";

@@ -9,11 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import {
-  ADD_BUN,
   ADD_INGREDIENT,
   MOVE_INGREDIENT,
-  pushOrder,
-} from "../../services/actions";
+} from "../../services/actions/current-ingredient-action";
+import { pushOrder } from "../../services/actions/order-action";
+import { ADD_BUN } from "../../services/actions/constructor-action";
 
 /* Стили */
 import burgerConstructorStyles from "./burger-constructor.module.scss";

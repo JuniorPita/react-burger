@@ -1,7 +1,7 @@
 /* Общие импорты */
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
-import { DELETE_INGREDIENT } from "../../../services/actions";
+import { DELETE_INGREDIENT } from "../../../services/actions/current-ingredient-action";
 import { useDrop, useDrag } from "react-dnd";
 import {
   ConstructorElement,

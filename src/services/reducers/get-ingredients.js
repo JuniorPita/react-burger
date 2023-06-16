@@ -1,9 +1,9 @@
 /* Общие импорты */
 import {
-  GET_LIST_INGREDIENTS_REQUEST,
-  GET_INGREDIENTS_SUCCESS,
   GET_INGREDIENTS_FAILED,
-} from "../actions";
+  GET_INGREDIENTS_SUCCESS,
+  GET_LIST_INGREDIENTS_REQUEST,
+} from "../actions/ingredients-action";
 
 const baseState = {
   data: [],

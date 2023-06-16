@@ -1,7 +1,7 @@
 /* Общие импорты */
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getIngredients } from "../../services/actions";
+import { getIngredients } from "../../services/actions/ingredients-action";
 
 /* Стили */
 import appStyles from "./app.module.scss";

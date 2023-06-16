@@ -1,5 +1,8 @@
 /* Общие импорты */
-import { SELECT_INGREDIENT, DELETE_INFO_INGREDIENT } from "../actions";
+import {
+  SELECT_INGREDIENT,
+  DELETE_INFO_INGREDIENT,
+} from "../actions/current-ingredient-action";
 
 const baseState = {
   selectedIngredient: {},
