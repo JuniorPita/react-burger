@@ -1,9 +1,14 @@
+/* Общие импорты */
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import modalStyles from "./modal.module.scss";
-import ModalOverlay from "./modal-overlay/modal-overlay";
 import PropTypes from "prop-types";
+
+/* Стили */
+import modalStyles from "./modal.module.scss";
+
+/* Компоненты */
+import ModalOverlay from "./modal-overlay/modal-overlay";
 
 const Modal = ({ children, onCloseModal }) => {
   const modalBox = document.getElementById("modalbox");
@@ -20,7 +25,7 @@ const Modal = ({ children, onCloseModal }) => {
     return () => {
       document.removeEventListener("keydown", closeByEscKeyButton);
     };
-  }, []);
+  }, [onCloseModal]);
 
   return createPortal(
     <>
