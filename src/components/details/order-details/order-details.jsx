@@ -1,21 +1,34 @@
+/* Общие импорты */
+import PropTypes from "prop-types";
+
+/* Стили */
 import orderDetailsStyles from "./order-details.module.scss";
 
-const OrderDetails = () => {
+/* Статичные строки */
+const orderIdTitle = "Идентификатор заказа";
+const orderStatusTitle = "Ваш заказ начали готовить";
+const orderDescriptionTitle = "Дождитесь готовности на орбитальной станции";
+
+const OrderDetails = ({ orderNumber }) => {
   return (
     <div className={orderDetailsStyles.orderDetails}>
-      <span className="text text_type_digits-large">034536</span>
+      <span className="text text_type_digits-large">{orderNumber}</span>
       <span className="text text_type_main-medium mt-8 mb-15">
-        Идентификатор заказа
+        {orderIdTitle}
       </span>
       <div className={orderDetailsStyles.orderDetails__icon}></div>
       <p className="text text_type_main-default mt-15 mb-2">
-        Ваш заказ начали готовить
+        {orderStatusTitle}
       </p>
       <p className="text text_type_main-default text_color_inactive">
-        Дождитесь готовности на орбитальной станции
+        {orderDescriptionTitle}
       </p>
     </div>
   );
+};
+
+OrderDetails.propTypes = {
+  orderNumber: PropTypes.number,
 };
 
 export default OrderDetails;
