@@ -1,20 +1,23 @@
-import mainPageStyles from "./main-page.module.scss";
+/* Общие импорты */
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
+/* Компоненты */
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
-import PropTypes from "prop-types";
-import IngredientPropTypes from "../../utils/Ingredient-prop-types";
 
-const MainPage = ({ elements }) => {
+/* Стили */
+import mainPageStyles from "./main-page.module.scss";
+
+const MainPage = () => {
   return (
     <main className={mainPageStyles.mainPage}>
-      <BurgerIngredients elements={elements} />
-      <BurgerConstructor elements={elements} />
+      <DndProvider backend={HTML5Backend}>
+        <BurgerIngredients />
+        <BurgerConstructor />
+      </DndProvider>
     </main>
   );
-};
-
-MainPage.propTypes = {
-  elements: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default MainPage;
