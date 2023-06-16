@@ -1,3 +1,6 @@
+/* Общие импорты */
+import { checkResponse } from "../../components/utils/check-response";
+
 /* Получение ингредиентов */
 export const GET_LIST_INGREDIENTS_REQUEST = "GET_LIST_INGREDIENTS_REQUEST";
 export const GET_INGREDIENTS_SUCCESS = "GET_INGREDIENTS_SUCCESS";
@@ -19,12 +22,6 @@ export const DELETE_INFO_INGREDIENT = "DELETE_INFO_INGREDIENT";
 
 /* Общий URL для получения данных */
 const UrlAdress = "https://norma.nomoreparties.space/api";
-
-const checkResponse = (result) => {
-  return result.ok
-    ? result.json()
-    : result.json().then((error) => new Promise.reject(error));
-};
 
 const request = async (url, options) => {
   const res = await fetch(`${UrlAdress}/${url}`, options);
