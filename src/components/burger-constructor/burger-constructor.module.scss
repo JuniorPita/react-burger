@@ -18,13 +18,6 @@
     max-height: 500px;
     overflow-y: scroll;
     @include scrollBar;
-
-    &_item {
-      display: flex;
-      align-items: center;
-      column-gap: 8px;
-      min-width: 560px;
-    }
   }
 
   &__order {
@@ -36,6 +29,7 @@
 
     &_info {
       display: flex;
+      align-items: center;
       column-gap: 10px;
 
       &__icon {
@@ -47,5 +41,12 @@
         background-position: center;
       }
     }
+  }
+
+  &__emptyOrder {
+    cursor: default;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100px;
   }
 }
