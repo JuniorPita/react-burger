@@ -1,5 +1,8 @@
-import modalOverlayStyles from "./modal-overlay.module.scss";
+/* Общие импорты */
 import PropTypes from "prop-types";
+
+/* Стили */
+import modalOverlayStyles from "./modal-overlay.module.scss";
 
 const ModalOverlay = ({ onCloseModal }) => {
   return (

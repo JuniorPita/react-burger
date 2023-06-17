@@ -1,0 +1,17 @@
+/* Стили для BurgerConstructorElement */
+.burgerElement {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  min-width: 560px;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}

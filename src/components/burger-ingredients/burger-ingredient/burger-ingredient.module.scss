@@ -5,8 +5,14 @@
   flex-direction: column;
   align-items: center;
   width: 270px;
-  cursor: pointer;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
 
   &:hover {
     scale: calc(100% + 2%);

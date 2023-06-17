@@ -1,113 +1,223 @@
-import { useState } from "react";
+/* Общие импорты */
+import { useState, useCallback } from "react";
 import {
   ConstructorElement,
   Button,
-  DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import burgerConstructorStyles from "./burger-constructor.module.scss";
-import Modal from "../modal/modal";
-import PropTypes from "prop-types";
-import OrderDetails from "../details/order-details/order-details";
-import IngredientPropTypes from "../../utils/Ingredient-prop-types";
+import { useModal } from "../../custom-hooks/use-modal";
+import { useDispatch, useSelector } from "react-redux";
+import { useDrop } from "react-dnd";
+import { v4 as uuidv4 } from "uuid";
+import {
+  ADD_INGREDIENT,
+  MOVE_INGREDIENT,
+} from "../../services/actions/current-ingredient-action";
+import { pushOrder } from "../../services/actions/order-action";
+import { ADD_BUN } from "../../services/actions/constructor-action";
 
-const BurgerConstructor = ({ elements }) => {
-  const [openModalWindow, setOpenModalWindow] = useState(false);
+/* Стили */
+import burgerConstructorStyles from "./burger-constructor.module.scss";
+
+/* Компоненты */
+import Modal from "../modal/modal";
+import OrderDetails from "../details/order-details/order-details";
+import BurgerConstructorElement from "./burger-constructor-element/burger-constructor-element";
+
+/* Статичные строки */
+const checkoutOrderTitle = "Оформить заказ";
+const emptyOrderTitle = "Перетащите необходимые позиции сюда";
+
+const BurgerConstructor = () => {
+  const { isModalOpened, openModalWindow, closeModalWindow } = useModal();
+  const dispatch = useDispatch();
+
+  const ingredients = useSelector(
+    (store) => store.burgerIngredients.ingredients
+  );
+
+  const bun = useSelector((store) => store.burgerIngredients.bun);
+  const buns = bun.slice(bun.length - 1);
+
+  const orderNumber = useSelector((store) => store.orderNumber.order);
+  const readyBurgerWithPositions = [...buns, ...ingredients];
+
+  const [disabled, setDisabled] = useState(true);
+
+  const checkReadyBurger = () => {
+    if (bun.length < 0 && ingredients.length < 0) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  };
+
+  const addIngredient = (ingredient) => {
+    const uuid = uuidv4();
+
+    dispatch({
+      type: ADD_INGREDIENT,
+      data: ingredient.props,
+      uuid: uuid,
+    });
+
+    checkReadyBurger();
+  };
+
+  const moveIngredient = useCallback(
+    (dragIndex, hoverIndex) => {
+      dispatch({
+        type: MOVE_INGREDIENT,
+        itemFrom: dragIndex,
+        itemTo: hoverIndex,
+      });
+    },
+    [dispatch]
+  );
+
+  const [{ isHover: isHoverEffect }, dropRef] = useDrop({
+    accept: "ingredient",
+    drop(item) {
+      if (item.props.type === "bun") {
+        dispatch({
+          type: ADD_BUN,
+          data: item.props,
+        });
+      } else {
+        addIngredient(item, uuidv4());
+      }
+    },
+    collect: (focus) => ({
+      isHover: focus.isOver(),
+    }),
+  });
+
+  const outlineBlockColor = isHoverEffect ? "#90EE90" : "#131316";
 
   const showModalWindow = () => {
-    setOpenModalWindow(true);
+    dispatch(pushOrder(readyBurgerWithPositions.map((item) => item._id)));
+    openModalWindow();
   };
 
   const hideModalWindow = () => {
-    setOpenModalWindow(false);
+    closeModalWindow();
   };
 
-  const filterElementsByType = elements.filter((element) => {
-    return element.type === "bun";
-  });
+  /* Индекс булки, чтобы они были изначально одинаковые (верхняя и нижняя) */
+  const numberBun = 0;
+  /* Цена за две одинаковые булки */
+  const priceBuns = buns[numberBun]?.price * 2;
 
-  const elementOnTop = filterElementsByType.map((element) => {
+  const totalPrice =
+    ingredients.length > 0 &&
+    buns.length > 0 &&
+    ingredients
+      .reduce((sum, ingredient) => sum + ingredient.price, priceBuns)
+      .toString();
+
+  const elementOnTop = buns.map((bun) => {
     return (
       <ConstructorElement
         type="top"
         isLocked={true}
-        text={`${element.name} (верх)`}
-        price={element.price}
-        thumbnail={element.image}
+        text={`${bun.name} (верх)`}
+        price={bun.price}
+        thumbnail={bun.image}
       />
     );
   });
 
-  const elementOnBottom = filterElementsByType.map((element) => {
+  const elementOnBottom = buns.map((bun) => {
     return (
       <ConstructorElement
         type="bottom"
         isLocked={true}
-        text={`${element.name} (низ)`}
-        price={element.price}
-        thumbnail={element.image}
+        text={`${bun.name} (низ)`}
+        price={bun.price}
+        thumbnail={bun.image}
       />
     );
   });
 
   return (
-    <section className={burgerConstructorStyles.burgerConstructor}>
+    <section
+      className={burgerConstructorStyles.burgerConstructor}
+      ref={dropRef}
+      style={{ outlineColor: outlineBlockColor }}
+    >
       <div className={burgerConstructorStyles.burgerConstructor__topElement}>
-        {elementOnTop[0]}
+        {elementOnTop[numberBun]}
       </div>
 
       <ul className={burgerConstructorStyles.burgerConstructor__list}>
-        {elements.map((element) => {
-          if (element.type !== "bun") {
-            return (
-              <li
-                className={burgerConstructorStyles.burgerConstructor__list_item}
-                key={element._id}
-              >
-                <DragIcon type="primary" />
-                <ConstructorElement
-                  text={element.name}
-                  price={element.price}
-                  thumbnail={element.image}
-                />
-              </li>
-            );
-          }
+        {ingredients.map((ingredient, index) => {
+          ingredient.index = index;
+
+          return (
+            <li
+              className={burgerConstructorStyles.burgerConstructor__list_item}
+              key={ingredient.uuid}
+            >
+              <BurgerConstructorElement
+                ingredient={ingredient}
+                index={index}
+                moveIngredient={moveIngredient}
+              />
+            </li>
+          );
         })}
       </ul>
 
-      <div className="pl-8 mt-4">{elementOnBottom[0]}</div>
+      <div className="pl-8 mt-4">{elementOnBottom[numberBun]}</div>
 
       <div className={burgerConstructorStyles.burgerConstructor__order}>
         <div className={burgerConstructorStyles.burgerConstructor__order_info}>
-          <span className="text text_type_digits-medium">610</span>
-          <div
-            className={
-              burgerConstructorStyles.burgerConstructor__order_info__icon
-            }
-          ></div>
-        </div>
+          {readyBurgerWithPositions.length > 0 && (
+            <>
+              <span className="text text_type_digits-medium">{totalPrice}</span>
+              <div
+                className={
+                  burgerConstructorStyles.burgerConstructor__order_info__icon
+                }
+              ></div>
 
-        <Button
-          htmlType="button"
-          type="primary"
-          size="large"
-          onClick={showModalWindow}
-        >
-          Оформить заказ
-        </Button>
+              <Button
+                htmlType="button"
+                type="primary"
+                size="large"
+                onClick={() => {
+                  showModalWindow();
+                  checkReadyBurger();
+                }}
+                disabled={disabled}
+              >
+                {checkoutOrderTitle}
+              </Button>
+            </>
+          )}
+
+          {(readyBurgerWithPositions.length < 0 ||
+            // eslint-disable-next-line
+            readyBurgerWithPositions == 0) && (
+            <>
+              <h2
+                className={
+                  burgerConstructorStyles.burgerConstructor__emptyOrder
+                }
+              >
+                {emptyOrderTitle}
+              </h2>
+            </>
+          )}
+        </div>
       </div>
 
-      {openModalWindow && (
+      {isModalOpened && (
         <Modal onCloseModal={hideModalWindow}>
-          <OrderDetails />
+          <OrderDetails orderNumber={orderNumber} />
         </Modal>
       )}
     </section>
   );
-};
-
-BurgerConstructor.propTypes = {
-  elements: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default BurgerConstructor;

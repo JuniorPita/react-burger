@@ -1,13 +1,21 @@
-import ingredientDetailsStyles from "./ingredient-details.module.scss";
-import PropTypes from "prop-types";
+/* Общие импорты */
+import { useSelector } from "react-redux";
 
-const IngredientDetails = ({ currentElement }) => {
-  const descriptionTitles = {
-    calories: "Калории, ккал",
-    proteins: "Белки, г",
-    fat: "Жиры, г",
-    carbohydrates: "Углеводы, г",
-  };
+/* Стили */
+import ingredientDetailsStyles from "./ingredient-details.module.scss";
+
+/* Статичные строки */
+const descriptionTitles = {
+  calories: "Калории, ккал",
+  proteins: "Белки, г",
+  fat: "Жиры, г",
+  carbohydrates: "Углеводы, г",
+};
+
+const IngredientDetails = () => {
+  const currentElement = useSelector(
+    (store) => store.ingredientDetails.selectedIngredient
+  );
 
   return (
     <section className={ingredientDetailsStyles.ingredientDetails}>
@@ -75,10 +83,6 @@ const IngredientDetails = ({ currentElement }) => {
       </div>
     </section>
   );
-};
-
-IngredientDetails.propTypes = {
-  currentElement: PropTypes.object.isRequired,
 };
 
 export default IngredientDetails;

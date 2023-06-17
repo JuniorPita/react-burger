@@ -1,14 +1,18 @@
+/* Общие импорты */
 import {
   BurgerIcon,
   ListIcon,
   Logo,
   ProfileIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+
+/* Стили */
 import appHeaderStyles from "./app-header.module.scss";
 
-const AppHeader = () => {
-  const navStrings = ["Конструктор", "Лента заказов", "Личный кабинет"];
+/* Статичные строки */
+const navStrings = ["Конструктор", "Лента заказов", "Личный кабинет"];
 
+const AppHeader = () => {
   return (
     <header className={appHeaderStyles.header}>
       <nav className={appHeaderStyles.nav}>
