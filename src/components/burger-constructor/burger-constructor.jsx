@@ -47,6 +47,7 @@ const BurgerConstructor = () => {
 
   useEffect(() => {
     checkReadyBurger();
+    //eslint-disable-next-line
   }, [readyBurgerWithPositions]);
 
   const checkReadyBurger = () => {

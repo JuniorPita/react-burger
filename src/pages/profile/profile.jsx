@@ -6,6 +6,14 @@ import { logoutUser } from "../../services/actions/user-logout";
 /* Стили */
 import profilePageStyles from "./profile.module.scss";
 
+/* Статичные строки */
+const profileStrings = [
+  "Профиль",
+  "История заказов",
+  "Выход",
+  "В этом разделе вы можете изменить свои персональные данные",
+];
+
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +39,7 @@ const ProfilePage = () => {
                   : `text text_type_main-medium ${profilePageStyles.profilePage_navigation_list_item_link}`
               }
             >
-              Профиль
+              {profileStrings[0]}
             </NavLink>
           </li>
 
@@ -44,7 +52,7 @@ const ProfilePage = () => {
                   : `text text_type_main-medium ${profilePageStyles.profilePage_navigation_list_item_link}`
               }
             >
-              История заказов
+              {profileStrings[1]}
             </NavLink>
           </li>
 
@@ -53,7 +61,7 @@ const ProfilePage = () => {
               onClick={handlerLogout}
               className={`text text_type_main-medium ${profilePageStyles.profilePage__navigation_list_item_button}`}
             >
-              Выход
+              {profileStrings[2]}
             </button>
           </li>
         </ul>
@@ -61,7 +69,7 @@ const ProfilePage = () => {
         <p
           className={`text text_type_main-default text_color_inactive ${profilePageStyles.profilePage__navigation_text}`}
         >
-          В этом разделе вы можете изменить свои персональные данные
+          {profileStrings[3]}
         </p>
       </div>
 

@@ -21,6 +21,7 @@ const IngredientDetails = () => {
 
   useEffect(() => {
     setElement(ingredients.find((ingredient) => ingredient._id === id));
+    //eslint-disable-next-line
   }, [ingredients]);
 
   return ingredient ? (
