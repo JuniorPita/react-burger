@@ -1,5 +1,7 @@
 /* Общие импорты */
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 /* Стили */
 import ingredientDetailsStyles from "./ingredient-details.module.scss";
@@ -13,19 +15,23 @@ const descriptionTitles = {
 };
 
 const IngredientDetails = () => {
-  const currentElement = useSelector(
-    (store) => store.ingredientDetails.selectedIngredient
-  );
+  const { id } = useParams();
+  const [ingredient, setElement] = useState(undefined);
+  const ingredients = useSelector((store) => store.ingredients.data);
 
-  return (
+  useEffect(() => {
+    setElement(ingredients.find((ingredient) => ingredient._id === id));
+  }, [ingredients]);
+
+  return ingredient ? (
     <section className={ingredientDetailsStyles.ingredientDetails}>
       <div className={ingredientDetailsStyles.ingredientDetails__header}>
         <h2 className="text text_type_main-large">Детали ингредиента</h2>
       </div>
 
-      <img src={currentElement.image_large} alt={currentElement.name} />
+      <img src={ingredient.image_large} alt={ingredient.name} />
       <span className="text text_type_main-medium mb-8 mt-4">
-        {currentElement.name}
+        {ingredient.name}
       </span>
 
       <div className={ingredientDetailsStyles.ingredientDetails__description}>
@@ -38,7 +44,7 @@ const IngredientDetails = () => {
             {descriptionTitles.calories}
           </span>
           <span className="text text_type_digits-default text_color_inactive">
-            {currentElement.calories}
+            {ingredient.calories}
           </span>
         </div>
 
@@ -51,7 +57,7 @@ const IngredientDetails = () => {
             {descriptionTitles.proteins}
           </span>
           <span className="text text_type_digits-default text_color_inactive">
-            {currentElement.proteins}
+            {ingredient.proteins}
           </span>
         </div>
 
@@ -64,7 +70,7 @@ const IngredientDetails = () => {
             {descriptionTitles.fat}
           </span>
           <span className="text text_type_digits-default text_color_inactive">
-            {currentElement.fat}
+            {ingredient.fat}
           </span>
         </div>
 
@@ -77,12 +83,12 @@ const IngredientDetails = () => {
             {descriptionTitles.carbohydrates}
           </span>
           <span className="text text_type_digits-default text_color_inactive">
-            {currentElement.carbohydrates}
+            {ingredient.carbohydrates}
           </span>
         </div>
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default IngredientDetails;

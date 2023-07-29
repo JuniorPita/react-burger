@@ -6,6 +6,7 @@ import {
 import { useSelector } from "react-redux";
 import { useDrag } from "react-dnd/dist/hooks";
 import PropTypes from "prop-types";
+import { useNavigate, useMatch } from "react-router-dom";
 
 /* Стили */
 import burgerIngredientStyles from "./burger-ingredient.module.scss";
@@ -14,6 +15,10 @@ const BurgerIngredient = (props) => {
   const { name, price, image, openModalWindow, _id, type } = props;
   const currentBun = useSelector((store) => store.burgerIngredients.bun);
   const buns = currentBun.slice(currentBun.length - 1);
+
+  const navigate = useNavigate();
+  const match = useMatch("ingredients/:id");
+  const { id } = match?.params || {};
 
   const countIngredients = useSelector(
     (store) =>
@@ -34,7 +39,14 @@ const BurgerIngredient = (props) => {
   return (
     <li
       className={burgerIngredientStyles.burgerIngredient}
-      onClick={openModalWindow}
+      onClick={() => {
+        if (id !== _id) {
+          navigate(`/react-burger/ingredients/${_id}`, {
+            state: { background: true },
+          });
+        }
+        openModalWindow();
+      }}
       draggable
       ref={dragRef}
     >
