@@ -1,7 +1,7 @@
 /* Общие импорты */
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 /* Стили */
 import ingredientDetailsStyles from "./ingredient-details.module.scss";
@@ -16,13 +16,13 @@ const descriptionTitles = {
 
 const IngredientDetails = () => {
   const { id } = useParams();
-  const [ingredient, setElement] = useState(undefined);
   const ingredients = useSelector((store) => store.ingredients.data);
 
-  useEffect(() => {
-    setElement(ingredients.find((ingredient) => ingredient._id === id));
-    //eslint-disable-next-line
-  }, [ingredients]);
+  const ingredient = useMemo(
+    () => ingredients.find((ingredient) => ingredient._id === id),
+    // eslint-disable-next-line
+    [ingredients]
+  );
 
   return ingredient ? (
     <section className={ingredientDetailsStyles.ingredientDetails}>

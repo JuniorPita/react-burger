@@ -38,7 +38,12 @@ export const getUser = () => {
           error: error.message,
         });
 
-        dispatch(updateUserToken());
+        dispatch(() => {
+          if (error.message === "jwt expired") {
+            updateUserToken();
+            requestForActions();
+          }
+        });
       });
   };
 };

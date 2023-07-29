@@ -19,7 +19,7 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   const handlerLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logoutUser({ onSuccess: () => navigate("/react-burger/login") }));
     navigate("/react-burger/login");
   };
 
