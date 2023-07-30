@@ -1,10 +1,9 @@
 /* Общие импорты */
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   ConstructorElement,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useModal } from "../../custom-hooks/use-modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
@@ -14,6 +13,7 @@ import {
 } from "../../services/actions/current-ingredient-action";
 import { pushOrder } from "../../services/actions/order-action";
 import { ADD_BUN } from "../../services/actions/constructor-action";
+import { useNavigate } from "react-router-dom";
 
 /* Стили */
 import burgerConstructorStyles from "./burger-constructor.module.scss";
@@ -25,11 +25,15 @@ import BurgerConstructorElement from "./burger-constructor-element/burger-constr
 
 /* Статичные строки */
 const checkoutOrderTitle = "Оформить заказ";
-const emptyOrderTitle = "Перетащите необходимые позиции сюда";
+const selectBun = "Выберите булку";
+const selectFilling = "Выберите начинку";
 
 const BurgerConstructor = () => {
-  const { isModalOpened, openModalWindow, closeModalWindow } = useModal();
+  const [openModal, setOpenedModal] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+
   const dispatch = useDispatch();
+  const navigation = useNavigate();
 
   const ingredients = useSelector(
     (store) => store.burgerIngredients.ingredients
@@ -41,7 +45,10 @@ const BurgerConstructor = () => {
   const orderNumber = useSelector((store) => store.orderNumber.order);
   const readyBurgerWithPositions = [...buns, ...ingredients];
 
-  const [disabled, setDisabled] = useState(true);
+  useEffect(() => {
+    checkReadyBurger();
+    //eslint-disable-next-line
+  }, [readyBurgerWithPositions]);
 
   const checkReadyBurger = () => {
     if (bun.length < 0 && ingredients.length < 0) {
@@ -95,11 +102,20 @@ const BurgerConstructor = () => {
 
   const showModalWindow = () => {
     dispatch(pushOrder(readyBurgerWithPositions.map((item) => item._id)));
-    openModalWindow();
+    setOpenedModal(true);
   };
 
   const hideModalWindow = () => {
-    closeModalWindow();
+    setOpenedModal(false);
+  };
+
+  const onClickHandler = () => {
+    if (!localStorage.getItem("refreshToken")) {
+      navigation("/react-burger/login");
+    } else {
+      showModalWindow();
+      setDisabled(true);
+    }
   };
 
   /* Индекс булки, чтобы они были изначально одинаковые (верхняя и нижняя) */
@@ -171,7 +187,15 @@ const BurgerConstructor = () => {
 
       <div className={burgerConstructorStyles.burgerConstructor__order}>
         <div className={burgerConstructorStyles.burgerConstructor__order_info}>
-          {readyBurgerWithPositions.length > 0 && (
+          {bun.length < 1 ? (
+            <p className="text text_type_main-medium">{selectBun}</p>
+          ) : ingredients.length < 2 ? (
+            <p className="text text_type_main-medium">{selectFilling}</p>
+          ) : (
+            ""
+          )}
+
+          {readyBurgerWithPositions.length > 2 && (
             <>
               <span className="text text_type_digits-medium">{totalPrice}</span>
               <div
@@ -185,8 +209,7 @@ const BurgerConstructor = () => {
                 type="primary"
                 size="large"
                 onClick={() => {
-                  showModalWindow();
-                  checkReadyBurger();
+                  onClickHandler();
                 }}
                 disabled={disabled}
               >
@@ -194,24 +217,10 @@ const BurgerConstructor = () => {
               </Button>
             </>
           )}
-
-          {(readyBurgerWithPositions.length < 0 ||
-            // eslint-disable-next-line
-            readyBurgerWithPositions == 0) && (
-            <>
-              <h2
-                className={
-                  burgerConstructorStyles.burgerConstructor__emptyOrder
-                }
-              >
-                {emptyOrderTitle}
-              </h2>
-            </>
-          )}
         </div>
       </div>
 
-      {isModalOpened && (
+      {openModal && (
         <Modal onCloseModal={hideModalWindow}>
           <OrderDetails orderNumber={orderNumber} />
         </Modal>

@@ -1,6 +1,8 @@
 /* Стили для AppHeader */
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -37,6 +39,20 @@
     &__profile {
       justify-content: flex-end;
       flex-basis: 35%;
+    }
+
+    &__link,
+    &__activeLink {
+      display: flex;
+      column-gap: 8px;
+    }
+
+    &__link {
+      color: #8585ad;
+    }
+
+    &__activeLink {
+      color: #f2f2f3;
     }
   }
 }

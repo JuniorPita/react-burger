@@ -7,6 +7,7 @@ import {
   getIngredientInfo,
   deleteIngredientInfo,
 } from "../../services/actions/current-ingredient-action";
+import { useNavigate } from "react-router-dom";
 
 /* Стили */
 import burgerIngredientsStyles from "./burger-ingredients.module.scss";
@@ -30,6 +31,8 @@ const BurgerIngredients = () => {
   const saucesRef = useRef();
   const fillingsRef = useRef();
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const showModalWindow = (element) => {
@@ -40,6 +43,7 @@ const BurgerIngredients = () => {
   const hideModalWindow = () => {
     dispatch(deleteIngredientInfo());
     closeModalWindow();
+    navigate("/react-burger");
   };
 
   const scrollHandling = () => {
