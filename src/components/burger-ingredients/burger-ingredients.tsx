@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { useState, useRef } from "react";
 import styles from "./burger-ingredients.module.scss";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";

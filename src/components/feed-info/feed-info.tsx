@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import styles from "./feed-info.module.scss";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { diffToString, diffDays } from "../../utils";

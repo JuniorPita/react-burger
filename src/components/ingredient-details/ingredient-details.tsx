@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import styles from "./ingredient-details.module.scss";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";

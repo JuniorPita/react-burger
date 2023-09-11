@@ -1,5 +1,14 @@
+/* Общие импорты */
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getCookie } from "../../utils/cookieFunction";
+import { updateUserToken, getUser } from "../../services/actions/user";
+import { getIngredients } from "../../services/actions/index";
+import { useAppDispatch } from "../../hooks/customHooks";
+import ProtectedRouteElement from "../protected-route-element/protected-route-element";
+import LogoutUserRoute from "../logout-user-route/logout-user-route";
+
+/* Компоненты */
 import AppHeader from "../app-header/app-header";
 import Main from "../main/main";
 import Login from "../../pages/login";
@@ -8,20 +17,13 @@ import PasswordForgot from "../../pages/password-forgot";
 import PasswordReset from "../../pages/password-reset";
 import Profile from "../../pages/profile";
 import UserInfo from "../../pages/info-user";
-import { getCookie } from "../../utils/cookieFunction";
-import { updateUserToken, getUser } from "../../services/actions/user";
-import { getIngredients } from "../../services/actions/index";
-import ProtectedRouteElement from "../protected-route-element/protected-route-element";
-import LogoutUserRoute from "../logout-user-route/logout-user-route";
 import IngredientsPage from "../../pages/ingredients";
 import ErrorPage from "../../pages/not-found";
 import Feed from "../../pages/order-feed";
 import FeedInfo from "../feed-info/feed-info";
 import OrdersUserHistory from "../order-user-history/order-user.history";
-import { useAppDispatch } from "../../hooks/customHooks";
-import styles from "./app.module.scss";
 
-function App() {
+const App = () => {
   const dispatch = useAppDispatch();
 
   const cookie = getCookie("accessToken");
@@ -78,6 +80,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

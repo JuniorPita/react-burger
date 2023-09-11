@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   Logo,
   BurgerIcon,
@@ -5,23 +6,28 @@ import {
   ProfileIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+
+/* Стили */
 import styles from "./app-header.module.scss";
 
-function AppHeader() {
+/* Статичные строки */
+const staticStrings = ["Конструктор", "Лента заказов", "Личный кабинет"];
+
+const AppHeader = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.leftContainer}>
+    <header className={styles.appHeader__header}>
+      <div className={styles.appHeader__container}>
+        <div className={styles.appHeader__container_leftContainer}>
           <NavLink
             end
             to="/react-burger"
             className={({ isActive }) =>
               isActive
-                ? `${styles.activeLink} text text_type_main-default`
-                : `${styles.link} text text_type_main-default`
+                ? `${styles.appHeader__activeLink} text text_type_main-default`
+                : `${styles.appHeader__link} text text_type_main-default`
             }
           >
             <BurgerIcon
@@ -29,14 +35,14 @@ function AppHeader() {
                 location.pathname === "/react-burger" ? "primary" : "secondary"
               }
             />
-            Конструктор
+            {staticStrings[0]}
           </NavLink>
           <NavLink
             to="/react-burger/feed"
             className={({ isActive }) =>
               isActive
-                ? `${styles.activeLink} text text_type_main-default`
-                : `${styles.link} text text_type_main-default`
+                ? `${styles.appHeader__activeLink} text text_type_main-default`
+                : `${styles.appHeader__link} text text_type_main-default`
             }
           >
             <ListIcon
@@ -46,19 +52,24 @@ function AppHeader() {
                   : "secondary"
               }
             />
-            Лента заказов
+            {staticStrings[1]}
           </NavLink>
         </div>
-        <div className={styles.logo} onClick={() => navigate("/react-burger")}>
+
+        <div
+          className={styles.appHeader__logo}
+          onClick={() => navigate("/react-burger")}
+        >
           <Logo />
         </div>
-        <div className={styles.rightContainer}>
+
+        <div className={styles.appHeader__container_rightContainer}>
           <NavLink
             to="react-burger/profile"
             className={({ isActive }) =>
               isActive
-                ? `${styles.activeLink} text text_type_main-default`
-                : `${styles.link} text text_type_main-default`
+                ? `${styles.appHeader__activeLink} text text_type_main-default`
+                : `${styles.appHeader__link} text text_type_main-default`
             }
           >
             <ProfileIcon
@@ -68,12 +79,12 @@ function AppHeader() {
                   : "secondary"
               }
             />
-            Личный кабинет
+            {staticStrings[2]}
           </NavLink>
         </div>
       </div>
     </header>
   );
-}
+};
 
 export default AppHeader;

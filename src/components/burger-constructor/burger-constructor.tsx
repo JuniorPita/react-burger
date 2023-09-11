@@ -1,25 +1,33 @@
+/* Общие импорты */
 import { useState, useCallback, useEffect } from "react";
 import { useDrop } from "react-dnd";
-import styles from "./burger-constructor.module.scss";
-import {
-  ConstructorElement,
-  Button,
-} from "@ya.praktikum/react-developer-burger-ui-components";
-import Modal from "../modal/modal";
-import OrderDetails from "../order-details/order-details";
 import {
   setOrder,
   ADD_INGREDIENT,
   ADD_BUN,
   MOVE_INGREDIENT,
 } from "../../services/actions";
-import BurgerConstructorSorted from "../burger-constructor-sorted/burger-constructor-sorted";
+import {
+  ConstructorElement,
+  Button,
+} from "@ya.praktikum/react-developer-burger-ui-components";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 import { TConstructorIngredient } from "../../services/types/types";
 
-function BurgerConstructor() {
+/* Стили */
+import styles from "./burger-constructor.module.scss";
+
+/* Компоненты */
+import Modal from "../modal/modal";
+import OrderDetails from "../order-details/order-details";
+import BurgerConstructorSorted from "../burger-constructor-sorted/burger-constructor-sorted";
+
+/* Статичные строки */
+const staticStrings = ["Выберите булку", "Выберите начинку", "Оформить заказ"];
+
+const BurgerConstructor = () => {
   const [openModal, setOpenModal] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
@@ -28,10 +36,10 @@ function BurgerConstructor() {
 
   const ingredients = useAppSelector(
     (store) => store.burgerIngredients.ingredients
-  ); // ингредиенты из стора
-  const bun = useAppSelector((store) => store.burgerIngredients.bun); // булки из стора
-  const buns = bun.slice(bun.length - 1); // оставляем в массиве только последний элемент
-  const numberOrder = useAppSelector((store) => store.numberOrder.order); // номер заказа из стора
+  );
+  const bun = useAppSelector((store) => store.burgerIngredients.bun);
+  const buns = bun.slice(bun.length - 1);
+  const numberOrder = useAppSelector((store) => store.numberOrder.order);
   const burger = [...buns, ...ingredients, ...buns];
   const loader = useAppSelector((store) => store.numberOrder.loading);
 
@@ -88,13 +96,11 @@ function BurgerConstructor() {
   );
 
   const showModal = () => {
-    // открыть модальное окно
     dispatch(setOrder(burger.map((item) => item._id)));
     setOpenModal(true);
   };
 
   const hideModal = () => {
-    // скрыть модальное окно
     setOpenModal(false);
   };
 
@@ -107,8 +113,8 @@ function BurgerConstructor() {
     }
   };
 
-  const numberBun = 0; // индекс из массива булок, чтобы при рендере булки были одинаковыми
-  const priceBuns = buns[numberBun]?.price * 2; //цена 2х булок
+  const numberBun = 0;
+  const priceBuns = buns[numberBun]?.price * 2;
 
   const totalPrice =
     ingredients.length > 0 &&
@@ -118,7 +124,6 @@ function BurgerConstructor() {
       .toString();
 
   const bunUpper = buns.map((item) => {
-    // разметка для верхней булки
     return (
       <ConstructorElement
         type="top"
@@ -131,7 +136,6 @@ function BurgerConstructor() {
   });
 
   const bunBottom = buns.map((item) => {
-    // разметка для нижней булки
     return (
       <ConstructorElement
         type="bottom"
@@ -144,13 +148,19 @@ function BurgerConstructor() {
   });
 
   return (
-    <div className={styles.content} ref={dropRef} style={{ outlineColor }}>
-      <div className={styles.borderElement}>{bunUpper[numberBun]}</div>
-      <ul className={styles.list}>
+    <div
+      className={styles.burgerConstructor__content}
+      ref={dropRef}
+      style={{ outlineColor }}
+    >
+      <div className={styles.burgerConstructor__borderElement}>
+        {bunUpper[numberBun]}
+      </div>
+      <ul className={styles.burgerConstructor__list}>
         {ingredients.map((ing, index) => {
           ing.index = index;
           return (
-            <li key={ing.uuid} className={styles.element}>
+            <li key={ing.uuid} className={styles.burgerConstructor__element}>
               <BurgerConstructorSorted
                 ing={ing}
                 index={index}
@@ -161,19 +171,19 @@ function BurgerConstructor() {
         })}
       </ul>
       <div className="pl-8 mt-4">{bunBottom[numberBun]}</div>
-      <div className={styles.order}>
-        <div className={styles.resultSum}>
+      <div className={styles.burgerConstructor__order}>
+        <div className={styles.burgerConstructor__resultSum}>
           {bun.length < 1 ? (
-            <p className="text text_type_main-medium">Выберите булку</p>
+            <p className="text text_type_main-medium">{staticStrings[0]}</p>
           ) : ingredients.length < 1 ? (
-            <p className="text text_type_main-medium">Выберите начинку</p>
+            <p className="text text_type_main-medium">{staticStrings[1]}</p>
           ) : (
             ""
           )}
           {burger.length > 2 && (
             <>
               <p className="text text_type_digits-medium">{totalPrice}</p>
-              <div className={styles.diamond}></div>
+              <div className={styles.burgerConstructor__diamond}></div>
             </>
           )}
         </div>
@@ -186,7 +196,7 @@ function BurgerConstructor() {
           }}
           disabled={disabled}
         >
-          Оформить заказ
+          {staticStrings[2]}
         </Button>
       </div>
 
@@ -197,6 +207,6 @@ function BurgerConstructor() {
       )}
     </div>
   );
-}
+};
 
 export default BurgerConstructor;

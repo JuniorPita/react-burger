@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { TModal } from "../../services/types/types";
 import styles from "./modal-overlay.module.scss";
 

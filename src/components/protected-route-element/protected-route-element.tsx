@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { Navigate, useLocation, Location } from "react-router-dom";
 import { getCookie } from "../../utils/cookieFunction";
 import { ReactElement } from "react";

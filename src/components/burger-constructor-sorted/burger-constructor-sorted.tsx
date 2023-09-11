@@ -1,13 +1,16 @@
+/* Общие импорты */
 import { useRef } from "react";
 import { useDrop, useDrag, XYCoord } from "react-dnd";
 import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./burger-constructor-sorted.module.scss";
 import { DELETE_INGREDIENT } from "../../services/actions";
 import { TIngredient } from "../../services/types/types";
 import { useAppDispatch } from "../../hooks/customHooks";
+
+/* Стили */
+import styles from "./burger-constructor-sorted.module.scss";
 
 type TIngredientSorted = {
   index: number;

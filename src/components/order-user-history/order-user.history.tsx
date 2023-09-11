@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { useEffect } from "react";
 import styles from "./order-user-history.module.scss";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";

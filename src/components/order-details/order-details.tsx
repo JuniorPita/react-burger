@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import Loader from "../loader/loader";
 import styles from "./order-details.module.scss";
 

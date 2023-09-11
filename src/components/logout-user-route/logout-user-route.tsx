@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { Navigate } from "react-router-dom";
 import { ReactElement } from "react";
 

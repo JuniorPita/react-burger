@@ -1,3 +1,7 @@
+/* Общие импорты */
+/* Стили */
+/* Компоненты */
+
 import { useDrag } from "react-dnd/dist/hooks";
 import {
   CurrencyIcon,
