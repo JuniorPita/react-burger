@@ -1,25 +1,25 @@
-import { 
-  REGISTER_USER_REQUEST, 
-  REGISTER_USER_SUCCESS, 
+import {
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
   REGISTER_USER_FAILED,
-  RESTORE_PASSWORD_REQUEST, 
+  RESTORE_PASSWORD_REQUEST,
   RESTORE_PASSWORD_SUCCESS,
-  RESTORE_PASSWORD_FAILED, 
+  RESTORE_PASSWORD_FAILED,
   SUCCESS_RESET,
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILED, 
-  LOGIN_REQUEST, 
-  LOGIN_SUCCESS, 
-  LOGIN_FAILED, 
-  UPDATE_TOKEN_REQUEST, 
-  UPDATE_TOKEN_SUCCESS, 
-  UPDATE_TOKEN_FAILED, 
-  GET_USER_REQUEST, 
-  GET_USER_SUCCESS, 
-  GET_USER_FAILED, 
-  LOGOUT_REQUEST, 
-  LOGOUT_SUCCESS, 
+  RESET_PASSWORD_FAILED,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  UPDATE_TOKEN_REQUEST,
+  UPDATE_TOKEN_SUCCESS,
+  UPDATE_TOKEN_FAILED,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
+  GET_USER_FAILED,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
   LOGOUT_FAILED,
   PATCH_USER_REQUEST,
   PATCH_USER_SUCCESS,
@@ -31,20 +31,21 @@ import {
   TUpdateTokenActions,
   TGetUserActions,
   TLogoutActions,
-  TPatchUserActions} from "../actions/user";
+  TPatchUserActions,
+} from "../actions/user";
 
 type TUserActions = {
-  loading: boolean,
-  success: boolean,
-  email: string,
-  name: string,
-  accessToken: string,
-  refreshToken: string,
-  error: string,
-  authorizedUser: boolean,
-  failed: boolean,
-  reset: boolean,
-}
+  loading: boolean;
+  success: boolean;
+  email: string;
+  name: string;
+  accessToken: string;
+  refreshToken: string;
+  error: string;
+  authorizedUser: boolean;
+  failed: boolean;
+  reset: boolean;
+};
 
 const initialState: TUserActions = {
   loading: false,
@@ -57,11 +58,21 @@ const initialState: TUserActions = {
   authorizedUser: false,
   failed: false,
   reset: false,
-}
+};
 
-export const userReducer = (state = initialState, action: TRegisterUserActions | TRestorePasswordActions | 
-  TResetPasswordActions | TLoginActions | TUpdateTokenActions | TGetUserActions | TLogoutActions | TPatchUserActions): TUserActions => {
-  switch(action.type) {
+export const userReducer = (
+  state = initialState,
+  action:
+    | TRegisterUserActions
+    | TRestorePasswordActions
+    | TResetPasswordActions
+    | TLoginActions
+    | TUpdateTokenActions
+    | TGetUserActions
+    | TLogoutActions
+    | TPatchUserActions
+): TUserActions => {
+  switch (action.type) {
     case REGISTER_USER_REQUEST: {
       return {
         ...state,
@@ -76,7 +87,7 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
         email: action.email,
         name: action.name,
         accessToken: action.accessToken,
-        refreshToken: action.refreshToken
+        refreshToken: action.refreshToken,
       };
     }
     case REGISTER_USER_FAILED: {
@@ -90,7 +101,7 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
     case RESTORE_PASSWORD_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     }
     case RESTORE_PASSWORD_SUCCESS: {
@@ -104,7 +115,7 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
       return {
         ...state,
         loading: false,
-        failed: true
+        failed: true,
       };
     }
     case SUCCESS_RESET: {
@@ -123,14 +134,14 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
       return {
         ...state,
         loading: false,
-        reset: action.reset
+        reset: action.reset,
       };
     }
     case RESET_PASSWORD_FAILED: {
       return {
         ...state,
         loading: false,
-        failed: true
+        failed: true,
       };
     }
     case LOGIN_REQUEST: {
@@ -148,7 +159,7 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
         refreshToken: action.refreshToken,
         email: action.email,
         name: action.name,
-        authorizedUser: true
+        authorizedUser: true,
       };
     }
     case LOGIN_FAILED: {
@@ -156,14 +167,14 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
         ...state,
         loading: false,
         failed: true,
-        error: action.error
+        error: action.error,
       };
     }
     case UPDATE_TOKEN_REQUEST: {
       return {
         ...state,
         loading: true,
-      }
+      };
     }
     case UPDATE_TOKEN_SUCCESS: {
       return {
@@ -177,7 +188,7 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
       return {
         ...state,
         loading: false,
-        failed: true
+        failed: true,
       };
     }
     case GET_USER_REQUEST: {
@@ -192,42 +203,42 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
         success: action.success,
         email: action.email,
         name: action.name,
-        authorizedUser: true
-      }
+        authorizedUser: true,
+      };
     }
     case GET_USER_FAILED: {
       return {
         ...state,
         failed: true,
-        loading: false
-      }
+        loading: false,
+      };
     }
     case LOGOUT_REQUEST: {
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     }
     case LOGOUT_SUCCESS: {
       return {
         ...state,
         loading: false,
         success: action.success,
-        authorizedUser: false
-      }
+        authorizedUser: false,
+      };
     }
     case LOGOUT_FAILED: {
       return {
         ...state,
         failed: true,
-        loading: false
-      }
+        loading: false,
+      };
     }
     case PATCH_USER_REQUEST: {
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     }
     case PATCH_USER_SUCCESS: {
       return {
@@ -235,16 +246,17 @@ export const userReducer = (state = initialState, action: TRegisterUserActions |
         loading: false,
         email: action.email,
         name: action.name,
-        success: action.success
-      }
+        success: action.success,
+      };
     }
     case PATCH_USER_FAILED: {
       return {
         ...state,
         failed: true,
-        loading: false
-      }
+        loading: false,
+      };
     }
-    default: return state;
+    default:
+      return state;
   }
-}
+};

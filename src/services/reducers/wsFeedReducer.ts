@@ -1,45 +1,48 @@
 import {
-  WS_CONNECTION_SUCCESS, 
-  WS_CONNECTION_ERROR, 
+  WS_CONNECTION_SUCCESS,
+  WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_MESSAGE,
-  TWebSocketActions
+  TWebSocketActions,
 } from "../actions/websocket";
 import { TOrder } from "../types/types";
 
 type TWebSocketState = {
-  wsConnected: boolean,
-  orders: TOrder[],
-  total: number,
-  totalToday: number,
-}
+  wsConnected: boolean;
+  orders: TOrder[];
+  total: number;
+  totalToday: number;
+};
 
 const initialState: TWebSocketState = {
   wsConnected: false,
   orders: [],
   total: 0,
-  totalToday: 0
-}
+  totalToday: 0,
+};
 
-export const wsFeedReducer = (state = initialState, action: TWebSocketActions): TWebSocketState => {
+export const wsFeedReducer = (
+  state = initialState,
+  action: TWebSocketActions
+): TWebSocketState => {
   switch (action.type) {
     case WS_CONNECTION_SUCCESS: {
       return {
         ...state,
-        wsConnected: true
+        wsConnected: true,
       };
     }
     case WS_CONNECTION_ERROR: {
       return {
         ...state,
-        wsConnected: false
+        wsConnected: false,
       };
     }
     case WS_CONNECTION_CLOSED: {
       return {
         ...state,
         orders: initialState.orders,
-        wsConnected: false
+        wsConnected: false,
       };
     }
     case WS_GET_MESSAGE: {
@@ -50,6 +53,7 @@ export const wsFeedReducer = (state = initialState, action: TWebSocketActions): 
         totalToday: action.payload.totalToday,
       };
     }
-    default: return state;
+    default:
+      return state;
   }
-}
+};

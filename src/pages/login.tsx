@@ -1,25 +1,28 @@
-import styles from "./login.module.css";
-import { EmailInput, Button, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link, useNavigate } from 'react-router-dom';
+import styles from "./login.module.scss";
+import {
+  EmailInput,
+  Button,
+  PasswordInput,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/actions/user";
 import { useForm } from "../hooks/useForm";
 import { useAppDispatch, useAppSelector } from "../hooks/customHooks";
-import { FormEvent } from 'react';
+import { FormEvent } from "react";
 
 function Login() {
-  
   const { values, handleChange } = useForm();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const isSuccessLogin = useAppSelector(store => store.user.authorizedUser);
+  const isSuccessLogin = useAppSelector((store) => store.user.authorizedUser);
 
   const handlerSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(loginUser(values.email, values.password));
-  }
+  };
 
-  if(isSuccessLogin) {
+  if (isSuccessLogin) {
     navigate(-1);
   }
 
@@ -29,30 +32,44 @@ function Login() {
       <EmailInput
         onChange={handleChange}
         value={values.email}
-        name={'email'}
+        name={"email"}
         isIcon={false}
         extraClass="mt-6"
       />
       <PasswordInput
         onChange={handleChange}
         value={values.password}
-        name={'password'}
+        name={"password"}
         extraClass="mt-6 mb-6"
       />
-      <Button 
-        htmlType="submit" type="primary" size="medium" extraClass={styles.button}>
-          Войти
+      <Button
+        htmlType="submit"
+        type="primary"
+        size="medium"
+        extraClass={styles.button}
+      >
+        Войти
       </Button>
-      <p className={`text text_type_main-default text_color_inactive ${styles.text}`}>
-        Вы - новый пользователь? 
-        <Link to="/react-burger/register" className={styles.link}> Зарегистрироваться</Link>
+      <p
+        className={`text text_type_main-default text_color_inactive ${styles.text}`}
+      >
+        Вы - новый пользователь?
+        <Link to="/react-burger/register" className={styles.link}>
+          {" "}
+          Зарегистрироваться
+        </Link>
       </p>
-      <p className={`text text_type_main-default text_color_inactive ${styles.text}`}>
-        Забыли пароль? 
-        <Link to="/react-burger/forgot-password" className={styles.link}> Восстановить пароль</Link>
+      <p
+        className={`text text_type_main-default text_color_inactive ${styles.text}`}
+      >
+        Забыли пароль?
+        <Link to="/react-burger/forgot-password" className={styles.link}>
+          {" "}
+          Восстановить пароль
+        </Link>
       </p>
     </form>
-  )
+  );
 }
 
 export default Login;

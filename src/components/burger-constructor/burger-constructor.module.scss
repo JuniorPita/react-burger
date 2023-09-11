@@ -22,7 +22,6 @@
   margin: 0;
   max-height: 480px;
   overflow-y: scroll;
-  
 }
 
 .list::-webkit-scrollbar {
@@ -30,11 +29,11 @@
 }
 
 .list::-webkit-scrollbar-track {
-  background: #2F2F37;
+  background: #2f2f37;
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: #8585AD;
+  background-color: #8585ad;
 }
 
 .borderElement {
@@ -49,7 +48,7 @@
   column-gap: 40px;
 }
 
-.resultSum{
+.resultSum {
   display: flex;
   column-gap: 8px;
 }

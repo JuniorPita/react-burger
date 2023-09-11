@@ -1,5 +1,10 @@
 import { getCookie } from "../../utils/cookieFunction";
-import { AppThunk, TConstructorIngredient, TIngredient, TOrder } from "../types/types";
+import {
+  AppThunk,
+  TConstructorIngredient,
+  TIngredient,
+  TOrder,
+} from "../types/types";
 
 export const GET_LIST_INGREDIENTS_REQUEST: "GET_LIST_INGREDIENTS_REQUEST" =
   "GET_LIST_INGREDIENTS_REQUEST";

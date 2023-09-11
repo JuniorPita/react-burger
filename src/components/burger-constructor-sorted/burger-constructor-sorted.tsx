@@ -1,25 +1,26 @@
-import { useRef, RefObject } from "react";
-import {useDrop, useDrag, XYCoord } from "react-dnd";
-import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./burger-constructor-sorted.module.css";
+import { useRef } from "react";
+import { useDrop, useDrag, XYCoord } from "react-dnd";
+import {
+  ConstructorElement,
+  DragIcon,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import styles from "./burger-constructor-sorted.module.scss";
 import { DELETE_INGREDIENT } from "../../services/actions";
 import { TIngredient } from "../../services/types/types";
 import { useAppDispatch } from "../../hooks/customHooks";
 
-
 type TIngredientSorted = {
-  index: number,
-  ing: TIngredient,
-  moveIngredient: Function,
-}
+  index: number;
+  ing: TIngredient;
+  moveIngredient: Function;
+};
 
 type TDragItem = {
-    index: number,
-    type: string
-}
+  index: number;
+  type: string;
+};
 
 function BurgerConstructorSorted(props: TIngredientSorted) {
-
   const { name, price, image, _id } = props.ing;
   const { index, moveIngredient } = props;
 
@@ -30,22 +31,23 @@ function BurgerConstructorSorted(props: TIngredientSorted) {
     dispatch({
       type: DELETE_INGREDIENT,
       data: ing._id,
-    })
-  }
+    });
+  };
 
   const [, drop] = useDrop<TDragItem>({
-    accept: 'ingredientList',
+    accept: "ingredientList",
     hover(item, monitor) {
       if (!ref.current) {
-          return;
+        return;
       }
       const dragIndex = item.index;
       const hoverIndex = index;
-      if(dragIndex === hoverIndex) {
+      if (dragIndex === hoverIndex) {
         return;
       }
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset();
       const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
@@ -56,15 +58,15 @@ function BurgerConstructorSorted(props: TIngredientSorted) {
       }
       moveIngredient(dragIndex, hoverIndex);
       item.index = hoverIndex;
-    }
+    },
   });
 
   const [, dragRef] = useDrag({
-    type: 'ingredientList',
+    type: "ingredientList",
     item: () => {
-      return {_id, index}
-    }
-  })
+      return { _id, index };
+    },
+  });
 
   dragRef(drop(ref));
 
@@ -77,8 +79,8 @@ function BurgerConstructorSorted(props: TIngredientSorted) {
         thumbnail={image}
         handleClose={() => removeIngredient(props.ing)}
       />
-    </div> 
-  )
+    </div>
+  );
 }
 
 export default BurgerConstructorSorted;
