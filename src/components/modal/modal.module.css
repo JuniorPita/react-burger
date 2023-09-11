@@ -1,0 +1,17 @@
+.modal {
+  width: 720px;
+  background-color: #1C1C21;
+  border-radius: 40px;
+  position: relative;
+  
+}
+
+.buttonClose {
+  padding: 0;
+  background-color: #1C1C21;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+}

@@ -1,0 +1,7 @@
+.element {
+  min-width: 568px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  cursor: pointer;
+}

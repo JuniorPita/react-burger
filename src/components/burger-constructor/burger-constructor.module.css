@@ -1,0 +1,74 @@
+.content {
+  box-sizing: border-box;
+  margin-top: 100px;
+  min-width: 600px;
+  padding-left: 16px;
+  outline: 3px solid;
+  min-height: 800px;
+}
+
+.element {
+  min-width: 568px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  max-height: 480px;
+  overflow-y: scroll;
+  
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #2F2F37;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+}
+
+.borderElement {
+  padding-left: 32px;
+  margin-bottom: 16px;
+}
+
+.order {
+  margin: 40px 0 0 194px;
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.resultSum{
+  display: flex;
+  column-gap: 8px;
+}
+
+.diamond {
+  background-image: url(../../images/diamond.svg);
+  width: 36px;
+  height: 36px;
+  background-repeat: no-repeat;
+}
+
+.bunareaTop {
+  border-radius: 88px 88px 40px 40px;
+  background: #2f2f37;
+  border: #8585ad 2px dashed;
+  height: 72px;
+  width: 535px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

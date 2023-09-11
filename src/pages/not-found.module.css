@@ -1,0 +1,18 @@
+.container {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtitle {
+  margin-top: 40px;
+}
+
+.image {
+  background-image: url(../images/404.jpg);
+  background-repeat: no-repeat;
+  height: 540px;
+  width: 720px;
+}

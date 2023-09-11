@@ -1,0 +1,27 @@
+body {
+  background: #131316;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/Iceland-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/JetBrainsMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url(./fonts/JetBrainsMono-Bold.ttf) format("truetype");
+}

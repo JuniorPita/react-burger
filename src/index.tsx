@@ -1,27 +1,24 @@
-/* Общие импорты */
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
+import App from './components/app/app';
 import store from './services/store';
+import { BrowserRouter} from 'react-router-dom';
 
-/* Стили */
-import './index.scss';
 
 const root = createRoot(
   document.getElementById('root') as HTMLElement
 );
-
 root.render(
-  <StrictMode>
+  // <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </StrictMode>
+  // </StrictMode>
 );
 
 reportWebVitals();
