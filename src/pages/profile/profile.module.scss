@@ -1,46 +1,50 @@
-/* Стили для ProfilePage */
-.profilePage {
-  max-width: 860px;
-  margin: 100px auto 0 auto;
-  display: flex;
-  column-gap: 60px;
+// Стили для Profile
+.profile {
+  &__content {
+    display: flex;
+    column-gap: 60px;
+    margin: 100px auto 0;
+    max-width: fit-content;
+  }
 
   &__navigation {
-    max-width: 320px;
     display: flex;
     flex-direction: column;
-
-    &_list {
-      margin: 0 0 80px 0;
-      padding: 0;
-
-      &_item {
-        margin: 17px 0 17px 0;
-
-        &_button {
-          background: none;
-          border: none;
-          color: #8585ad;
-        }
-
-        &_link,
-        &_activeLink {
-          display: flex;
-          column-gap: 8px;
-        }
-      }
-    }
-
-    &_text {
-      margin: 0;
-    }
+    max-width: 320px;
   }
-}
 
-a.profilePage_navigation_list_item_link {
-  color: #8585ad;
-}
+  &__list {
+    margin: 0 0 80px;
+    padding: 0;
+    list-style: none;
+  }
 
-a.profilePage_navigation_list_item_activeLink {
-  color: #f2f2f3;
+  &__text {
+    margin: 0;
+  }
+
+  &__element {
+    margin: 17px 0 17px;
+  }
+
+  &__link {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #8585ad;
+  }
+
+  &__activeLink {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #f2f2f3;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    color: #8585ad;
+    cursor: pointer;
+  }
 }

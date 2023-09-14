@@ -1,0 +1,21 @@
+// Стили для Ingredient
+.ingredient {
+  &__element {
+    width: 272px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__price {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+  }
+
+  &__title {
+    text-align: center;
+  }
+}

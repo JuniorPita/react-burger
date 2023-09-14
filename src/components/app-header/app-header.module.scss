@@ -1,58 +1,63 @@
-/* Стили для AppHeader */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: rgba(28, 28, 33, 0.9);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 100;
+// Стили для AppHeader
+.appHeader {
+  &__header {
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto 20px;
+    background-color: rgba(28, 28, 33, 1);
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+      0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+      0px 0px 1px rgba(0, 0, 0, 0.04);
+    max-width: 1920px;
+  }
 
-  .nav {
-    width: 1280px;
+  &__logo {
+    cursor: pointer;
+    position: absolute;
+    left: 38.8%;
+    top: 4px;
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 0 16px 0;
     display: flex;
-    justify-content: stretch;
+    justify-content: space-between;
+    position: relative;
+
+    &_leftContainer {
+      display: flex;
+      column-gap: 48px;
+    }
+
+    &_rightContainer {
+      display: flex;
+    }
+  }
+
+  &__button {
+    display: flex;
+    column-gap: 8px;
+    background-color: inherit;
+    color: #f2f2f3;
+    border: none;
+    padding: 0 20px 0 20px;
     align-items: center;
-    padding: 16px 10px;
+    cursor: pointer;
+  }
 
-    &__list {
-      display: flex;
-      align-items: center;
-      flex-basis: 35%;
-      column-gap: 40px;
+  &__link {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #8585ad;
+  }
 
-      &Item {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-    }
-
-    &__logo {
-      justify-content: center;
-      flex-basis: 30%;
-    }
-
-    &__profile {
-      justify-content: flex-end;
-      flex-basis: 35%;
-    }
-
-    &__link,
-    &__activeLink {
-      display: flex;
-      column-gap: 8px;
-    }
-
-    &__link {
-      color: #8585ad;
-    }
-
-    &__activeLink {
-      color: #f2f2f3;
-    }
+  &__activeLink {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #f2f2f3;
   }
 }

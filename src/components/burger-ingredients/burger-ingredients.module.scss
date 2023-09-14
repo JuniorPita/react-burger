@@ -1,7 +1,4 @@
-/* Инициализация миксинов */
-@import "../../styles/mixins";
-
-/* Стили для BurgerIngredients */
+// Стили для BurgerIngredients
 .burgerIngredients {
   &__tabs {
     display: flex;
@@ -10,16 +7,28 @@
 
   &__components {
     max-width: 600px;
-    max-height: 750px;
+    max-height: 756px;
     overflow-y: scroll;
-    @include scrollBar;
 
-    &_list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 26px;
-      padding-left: 16px;
-      margin-top: 40px;
+    &::-webkit-scrollbar {
+      width: 8px;
     }
+
+    &::-webkit-scrollbar-track {
+      background: #2f2f37;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #8585ad;
+    }
+  }
+
+  &__listElements {
+    list-style: none;
+    padding: 0 0 0 16px;
+    display: flex;
+    column-gap: 24px;
+    margin: 0;
+    flex-wrap: wrap;
   }
 }

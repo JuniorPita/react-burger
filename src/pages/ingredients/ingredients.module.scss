@@ -1,4 +1,6 @@
-/* Стили для IngredientsPage */
-.ingredientsPage {
-  margin-top: 60px;
+// Стили для Ingredients
+.ingredients {
+  &__container {
+    margin-top: 60px;
+  }
 }

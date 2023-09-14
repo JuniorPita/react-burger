@@ -1,24 +1,26 @@
-/* Стили для LoginPage */
-.loginPage {
-  display: flex;
-  flex-direction: column;
-  max-width: 480px;
-  margin: 160px auto 0 auto;
+// Стили для Login
+.login {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    margin: 160px auto 0;
+  }
 
   &__title {
     text-align: center;
   }
 
   &__button {
-    margin: 0 auto 64px auto;
+    margin: 0 auto 64px;
   }
 
   &__text {
-    margin: 16px auto 0 auto;
+    margin: 16px auto 0;
+  }
 
-    &_link {
-      margin-left: 10px;
-      color: #4c4cff;
-    }
+  &__link {
+    color: #4c4cff;
+    text-decoration: none;
   }
 }

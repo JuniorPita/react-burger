@@ -1,20 +1,21 @@
-/* Стили для ErrorPage */
-.errorPage {
-  margin-top: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  &__img {
-    width: 540px;
-    height: 720px;
-    background-image: url("../../images/404.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+// Стили для NotFound
+.notFound {
+  &__container {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   &__subtitle {
     margin-top: 40px;
+  }
+
+  &__image {
+    background-image: url(../../images/404.jpg);
+    background-repeat: no-repeat;
+    height: 540px;
+    width: 720px;
   }
 }
