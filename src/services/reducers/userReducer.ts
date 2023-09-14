@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,

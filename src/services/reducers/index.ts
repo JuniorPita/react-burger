@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { combineReducers } from "redux";
 import { getIngredientsReducer } from "../reducers/getIngredientsReducer";
 import { burgerConstructorReducer } from "../reducers/burgerConstructorReducer";

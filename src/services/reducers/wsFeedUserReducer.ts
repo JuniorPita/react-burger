@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   WS_CONNECTION_CLOSED_USER,
   WS_CONNECTION_ERROR_USER,

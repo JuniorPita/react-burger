@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   ADD_INGREDIENT,
   ADD_BUN,

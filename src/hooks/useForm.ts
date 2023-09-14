@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { useState, ChangeEvent } from "react";
 
 type FormValues = {
@@ -21,5 +22,6 @@ export function useForm(
     const { value, name } = event.target;
     setValues({ ...values, [name]: value });
   };
+
   return { values, handleChange, setValues };
 }

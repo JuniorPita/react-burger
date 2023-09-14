@@ -1,10 +1,7 @@
-/* Общие импорты */
 /* Стили */
-/* Компоненты */
-
 import "./loader.scss";
 
-function Loader() {
+const Loader = () => {
   return (
     <>
       <div
@@ -31,6 +28,6 @@ function Loader() {
       </div>
     </>
   );
-}
+};
 
 export default Loader;

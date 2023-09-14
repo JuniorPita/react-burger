@@ -1,4 +1,4 @@
-import styles from "./info-user.module.scss";
+/* Общие импорты */
 import { useRef, useEffect, FormEvent } from "react";
 import {
   EmailInput,
@@ -6,13 +6,26 @@ import {
   PasswordInput,
   Input,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { patchUser, getUser } from "../services/actions/user";
-import { useModal } from "../hooks/useModal";
-import Modal from "../components/modal/modal";
-import { useForm } from "../hooks/useForm";
-import { useAppSelector, useAppDispatch } from "../hooks/customHooks";
+import { patchUser, getUser } from "../../services/actions/user";
+import { useModal } from "../../hooks/useModal";
+import { useForm } from "../../hooks/useForm";
+import { useAppSelector, useAppDispatch } from "../../hooks/customHooks";
 
-function UserInfo() {
+/* Стили */
+import styles from "./info-user.module.scss";
+
+/* Компоненты */
+import Modal from "../../components/modal/modal";
+
+/* Статичные строки */
+const staticStrings = [
+  "Отмена",
+  "Сохранить",
+  "Ваши данные успешно изменены",
+  "Произошла ошибка. Попробуйте снова",
+];
+
+const UserInfo = () => {
   const { name, email, success } = useAppSelector((store) => store.user);
   const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
@@ -90,17 +103,17 @@ function UserInfo() {
           placeholder={"Пароль"}
           icon={"EditIcon"}
         />
-        <div className={styles.buttons}>
+        <div className={styles.infoUser__buttons}>
           <Button
             htmlType="button"
             type="secondary"
             size="medium"
             onClick={handlerCancel}
           >
-            Отмена
+            {staticStrings[0]}
           </Button>
           <Button htmlType="submit" type="primary" size="medium">
-            Сохранить
+            {staticStrings[1]}
           </Button>
         </div>
       </form>
@@ -108,15 +121,11 @@ function UserInfo() {
       <div>
         {isModalOpen && (
           <Modal onClosePopup={hideModal}>
-            <div className={styles.container}>
+            <div className={styles.infoUser__container}>
               {success ? (
-                <p className="text text_type_main-medium">
-                  Ваши данные успешно изменены
-                </p>
+                <p className="text text_type_main-medium">{staticStrings[2]}</p>
               ) : (
-                <p className="text text_type_main-medium">
-                  Произошла ошибка. Попробуйте снова
-                </p>
+                <p className="text text_type_main-medium">{staticStrings[3]}</p>
               )}
             </div>
           </Modal>
@@ -124,6 +133,6 @@ function UserInfo() {
       </div>
     </>
   );
-}
+};
 
 export default UserInfo;

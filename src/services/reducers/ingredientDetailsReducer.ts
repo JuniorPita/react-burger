@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   SELECT_INGREDIENT,
   DELETE_INFO_INGREDIENT,

@@ -1,4 +1,4 @@
-import styles from "./password-reset.module.scss";
+/* Общие импорты */
 import { useEffect, FormEvent } from "react";
 import { Link, Navigate } from "react-router-dom";
 import {
@@ -6,11 +6,22 @@ import {
   Button,
   PasswordInput,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { SUCCESS_RESET, resetPassword } from "../services/actions/user";
-import { useForm } from "../hooks/useForm";
-import { useAppDispatch, useAppSelector } from "../hooks/customHooks";
+import { SUCCESS_RESET, resetPassword } from "../../services/actions/user";
+import { useForm } from "../../hooks/useForm";
+import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
-function PasswordReset() {
+/* Стили */
+import styles from "./password-reset.module.scss";
+
+/* Статичные строки */
+const staticStrings = [
+  "Восстановление пароля",
+  "Сохранить",
+  "Вспомнили пароль?",
+  "Войти",
+];
+
+const PasswordReset = () => {
   const dispatch = useAppDispatch();
   const isSuccessReset = useAppSelector((store) => store.user.reset);
   const { values, handleChange } = useForm();
@@ -31,9 +42,11 @@ function PasswordReset() {
   }
 
   return (
-    <form className={styles.content} onSubmit={handlerSubmit}>
-      <h2 className={`text text_type_main-medium ${styles.title}`}>
-        Восстановление пароля
+    <form className={styles.passwordReset__content} onSubmit={handlerSubmit}>
+      <h2
+        className={`text text_type_main-medium ${styles.passwordReset__title}`}
+      >
+        {staticStrings[0]}
       </h2>
       <PasswordInput
         placeholder={"Введите новый пароль"}
@@ -57,21 +70,21 @@ function PasswordReset() {
         htmlType="submit"
         type="primary"
         size="medium"
-        extraClass={styles.button}
+        extraClass={styles.passwordReset__button}
       >
-        Сохранить
+        {staticStrings[1]}
       </Button>
       <p
-        className={`text text_type_main-default text_color_inactive ${styles.text}`}
+        className={`text text_type_main-default text_color_inactive ${styles.passwordReset__text}`}
       >
-        Вспомнили пароль?
-        <Link to="/react-burger/login" className={styles.link}>
+        {staticStrings[2]}
+        <Link to="/react-burger/login" className={styles.passwordReset__link}>
           {" "}
-          Войти
+          {staticStrings[3]}
         </Link>
       </p>
     </form>
   );
-}
+};
 
 export default PasswordReset;

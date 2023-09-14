@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState, AppThunk } from "../services/types/types";
 

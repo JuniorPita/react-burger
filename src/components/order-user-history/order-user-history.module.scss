@@ -1,85 +1,101 @@
-.container {
-  margin-top: -60px;
+// Стили для OrderUser
+.orderUser {
+  &__container {
+    margin-top: -60px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    max-width: 860px;
+    max-height: 880px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: #2f2f37;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 8px;
+      background-color: #8585ad;
+    }
+  }
+
+  &__element {
+    background-color: rgba(28, 28, 33, 1);
+    padding: 24px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    max-width: 844px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__ingredients {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+  }
+
+  &__ingredient {
+    position: relative;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+  }
+
+  &__color {
+    color: rgba(0, 204, 204, 1);
+  }
+
+  &__image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    object-position: center;
+    background-color: #131316;
+    border-radius: 50px;
+    border: 2px solid rgba(128, 26, 178, 1);
+  }
+
+  &__text {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    position: absolute;
+    z-index: 15;
+    top: 30%;
+    left: 30%;
+    margin: 0;
+  }
 }
 
-.list {
-  list-style: none;
-  padding: 0;
-  max-width: 860px;
-  max-height: 880px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
-}
-
-.list::-webkit-scrollbar {
-  width: 8px;
-  background-color: #2f2f37;
-}
-
-.list::-webkit-scrollbar-thumb {
-  width: 8px;
-  background-color: #8585ad;
-}
-
-.element {
-  background-color: rgba(28, 28, 33, 1);
-  padding: 24px;
-  border-radius: 40px;
-  box-sizing: border-box;
-  max-width: 844px;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.ingredients {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: start;
-}
-
-.ingredient {
-  position: relative;
-}
-
-ul .ingredient:not(:last-child) {
+ul .orderUser__ingredient:not(:last-child) {
   margin-left: -15px;
 }
 
-.footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.price {
-  display: flex;
-  column-gap: 8px;
-  align-items: center;
-}
-
-.color {
-  color: rgba(0, 204, 204, 1);
-}
-
-.image {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  object-position: center;
-  background-color: #131316;
-  border-radius: 50px;
-  border: 2px solid rgba(128, 26, 178, 1);
-}
-
-ul .last::after {
+ul .orderUser__last::after {
   display: block;
   position: absolute;
   top: 0;
@@ -91,17 +107,4 @@ ul .last::after {
   opacity: 0.6;
   content: "";
   border-radius: 50px;
-}
-
-.text {
-  font-family: "JetBrains Mono";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  position: absolute;
-  z-index: 15;
-  top: 30%;
-  left: 30%;
-  margin: 0;
 }

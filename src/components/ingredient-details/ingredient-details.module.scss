@@ -1,36 +1,39 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px 0 60px 0;
-  align-items: center;
-}
+// Стили для IngredientDetails
+.ingredientDetails {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0 60px 0;
+    align-items: center;
+  }
 
-.header {
-  min-width: 640px;
-  min-height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  &__header {
+    min-width: 640px;
+    min-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.composition {
-  display: flex;
-  column-gap: 20px;
-}
+  &__composition {
+    display: flex;
+    column-gap: 20px;
+  }
 
-.calories {
-  min-width: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 8px;
-}
+  &__calories {
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+  }
 
-.elements {
-  min-width: 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 8px;
+  &__elements {
+    min-width: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+  }
 }

@@ -1,13 +1,4 @@
 /* Общие импорты */
-/* Стили */
-/* Компоненты */
-
-import { useState, useRef } from "react";
-import styles from "./burger-ingredients.module.scss";
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import Ingredient from "../ingredient/ingredient";
-import Modal from "../modal/modal";
-import IngredientDetails from "../ingredient-details/ingredient-details";
 import {
   getDetailsIngredient,
   deleteDetailsIngredient,
@@ -16,8 +7,21 @@ import { useModal } from "../../hooks/useModal";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../hooks/customHooks";
 import { TIngredient } from "../../services/types/types";
+import { useState, useRef } from "react";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
-function BurgerIngredients() {
+/* Стили */
+import styles from "./burger-ingredients.module.scss";
+
+/* Компоненты */
+import Ingredient from "../ingredient/ingredient";
+import Modal from "../modal/modal";
+import IngredientDetails from "../ingredient-details/ingredient-details";
+
+/* Статичные строки */
+const staticStrings = ["Соберите бургер", "Булки", "Соусы", "Начинки"];
+
+const BurgerIngredients = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
 
   const ingredients = useAppSelector((store) => store.ingredients.data);
@@ -75,8 +79,10 @@ function BurgerIngredients() {
   }
   return (
     <div>
-      <h1 className="text text_type_main-large mb-5 mt-10">Соберите бургер</h1>
-      <div className={styles.tabs}>
+      <h1 className="text text_type_main-large mb-5 mt-10">
+        {staticStrings[0]}
+      </h1>
+      <div className={styles.burgerIngredients__tabs}>
         <div id={"bun"}>
           <Tab
             value="bun"
@@ -85,7 +91,7 @@ function BurgerIngredients() {
               setTab(e, bunsRef);
             }}
           >
-            Булки
+            {staticStrings[1]}
           </Tab>
         </div>
         <div id={"sauce"}>
@@ -96,7 +102,7 @@ function BurgerIngredients() {
               setTab(e, saucesRef);
             }}
           >
-            Соусы
+            {staticStrings[2]}
           </Tab>
         </div>
         <div id={"main"}>
@@ -107,19 +113,19 @@ function BurgerIngredients() {
               setTab(e, mainRef);
             }}
           >
-            Начинки
+            {staticStrings[3]}
           </Tab>
         </div>
       </div>
       <div
-        className={styles.components}
+        className={styles.burgerIngredients__components}
         ref={container}
         onScroll={handleScroll}
       >
         <h2 className="text text_type_main-medium mt-10 mb-6" ref={bunsRef}>
-          Булки
+          {staticStrings[1]}
         </h2>
-        <ul className={styles.listElements}>
+        <ul className={styles.burgerIngredients__listElements}>
           {ingredients.map((obj) => {
             if (obj.type === "bun") {
               return (
@@ -133,9 +139,9 @@ function BurgerIngredients() {
           })}
         </ul>
         <h2 className="text text_type_main-medium mt-10 mb-6" ref={saucesRef}>
-          Соусы
+          {staticStrings[2]}
         </h2>
-        <ul className={styles.listElements}>
+        <ul className={styles.burgerIngredients__listElements}>
           {ingredients.map((obj) => {
             if (obj.type === "sauce") {
               return (
@@ -149,9 +155,9 @@ function BurgerIngredients() {
           })}
         </ul>
         <h2 className="text text_type_main-medium mt-10 mb-6" ref={mainRef}>
-          Начинки
+          {staticStrings[3]}
         </h2>
-        <ul className={styles.listElements}>
+        <ul className={styles.burgerIngredients__listElements}>
           {ingredients.map((obj) => {
             if (obj.type === "main") {
               return (
@@ -173,6 +179,6 @@ function BurgerIngredients() {
       )}
     </div>
   );
-}
+};
 
 export default BurgerIngredients;

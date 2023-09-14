@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { Action, ActionCreator } from "redux";
 import { ReactElement } from "react";
 import { ThunkAction } from "redux-thunk";

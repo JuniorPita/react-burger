@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { TServerResponse, request } from "./index";
 import { setCookie, getCookie } from "../../utils/cookieFunction";
 import { AppThunk } from "../types/types";

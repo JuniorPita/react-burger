@@ -1,9 +1,9 @@
+/* Общие импорты */
 import { useEffect, useMemo } from "react";
-import styles from "./order-feed.module.scss";
 import {
   WS_CLOSE_CONNECTION,
   WS_CONNECTION_START,
-} from "../services/actions/websocket";
+} from "../../services/actions/websocket";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import {
   Outlet,
@@ -12,14 +12,28 @@ import {
   useParams,
   Location,
 } from "react-router-dom";
-import { useModal } from "../hooks/useModal";
-import Modal from "../components/modal/modal";
-import FeedInfo from "../components/feed-info/feed-info";
-import { diffToString, diffDays } from "../utils";
+import { useModal } from "../../hooks/useModal";
+import { diffToString, diffDays } from "../../utils";
 import { v4 as uuidv4 } from "uuid";
-import { useAppDispatch, useAppSelector } from "../hooks/customHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
-function Feed() {
+/* Стили */
+import styles from "./order-feed.module.scss";
+
+/* Компоненты */
+import Modal from "../../components/modal/modal";
+import FeedInfo from "../../components/feed-info/feed-info";
+
+/* Статичные строки */
+const staticStrings = [
+  "Лента заказов",
+  "Готовы:",
+  "В работе:",
+  "Выполнено за все время:",
+  "Выполнено за сегодня:",
+];
+
+const Feed = () => {
   const params = useParams();
   const location: Location = useLocation();
   const background: boolean = location.state?.background;
@@ -27,7 +41,7 @@ function Feed() {
   const { isModalOpen, openModal, closeModal } = useModal();
   const dispatch = useAppDispatch();
   const { orders, total, totalToday } = useAppSelector((store) => store.wsFeed);
-  const ingredients = useAppSelector((store) => store.ingredients.data); // все ингредиенты
+  const ingredients = useAppSelector((store) => store.ingredients.data);
 
   const navigate = useNavigate();
 
@@ -75,13 +89,13 @@ function Feed() {
   return params.id && !background ? (
     <Outlet />
   ) : (
-    <div className={styles.container}>
-      <h2 className={`text text_type_main-large ${styles.title}`}>
-        Лента заказов
+    <div className={styles.orderFeed__container}>
+      <h2 className={`text text_type_main-large ${styles.orderFeed__title}`}>
+        {staticStrings[0]}
       </h2>
-      <div className={styles.box}>
-        <div className={styles.leftContainer}>
-          <ul className={styles.list}>
+      <div className={styles.orderFeed__box}>
+        <div className={styles.orderFeed__leftContainer}>
+          <ul className={styles.orderFeed__list}>
             {orders.map((order) => {
               const _id = order._id;
               const orderDate = new Date(Date.parse(order.createdAt));
@@ -94,7 +108,7 @@ function Feed() {
 
               return (
                 <li
-                  className={styles.orderElement}
+                  className={styles.orderFeed__orderElement}
                   key={uuidv4()}
                   onClick={() => {
                     navigate(`/react-burger/feed/${_id}`, {
@@ -103,7 +117,7 @@ function Feed() {
                     openModal();
                   }}
                 >
-                  <div className={`${styles.infoOrder} mb-6`}>
+                  <div className={`${styles.orderFeed__infoOrder} mb-6`}>
                     <p className="text text_type_digits-default">
                       #{order.number}
                     </p>
@@ -121,8 +135,8 @@ function Feed() {
                   <h2 className="text text_type_main-medium mb-6">
                     {order.name}
                   </h2>
-                  <div className={styles.containerIngredients}>
-                    <ul className={styles.ingredients}>
+                  <div className={styles.orderFeed__containerIngredients}>
+                    <ul className={styles.orderFeed__ingredients}>
                       {order.ingredients.map((ingredient, index) => {
                         if (ingredient !== null) {
                           if (index > 0 && index <= 5) {
@@ -130,7 +144,7 @@ function Feed() {
                               <li
                                 key={uuidv4()}
                                 style={{ zIndex: index }}
-                                className={styles.imgElement}
+                                className={styles.orderFeed__imgElement}
                               >
                                 <img
                                   src={
@@ -143,7 +157,7 @@ function Feed() {
                                       (el) => el._id === ingredient
                                     )?.name
                                   }
-                                  className={styles.image}
+                                  className={styles.orderFeed__image}
                                 />
                               </li>
                             );
@@ -154,9 +168,9 @@ function Feed() {
                                 <li
                                   key={uuidv4()}
                                   style={{ zIndex: index }}
-                                  className={`${styles.imgElement} ${styles.last}`}
+                                  className={`${styles.orderFeed__imgElement} ${styles.orderFeed__last}`}
                                 >
-                                  <p className={`${styles.text}`}>
+                                  <p className={`${styles.orderFeed__text}`}>
                                     +{order.ingredients.length - 5}
                                   </p>
                                   <img
@@ -170,7 +184,7 @@ function Feed() {
                                         (el) => el._id === ingredient
                                       )?.name
                                     }
-                                    className={styles.image}
+                                    className={styles.orderFeed__image}
                                   />
                                 </li>
                               );
@@ -179,7 +193,7 @@ function Feed() {
                         }
                       })}
                     </ul>
-                    <div className={styles.price}>
+                    <div className={styles.orderFeed__price}>
                       <p className="text text_type_digits-default">
                         {totalPrice(order.ingredients)}
                       </p>
@@ -191,17 +205,21 @@ function Feed() {
             })}
           </ul>
         </div>
-        <div className={styles.rightContainer}>
-          <div className={styles.orders}>
-            <h2 className="text text_type_main-medium mb-6">Готовы:</h2>
-            <h2 className="text text_type_main-medium mb-6">В работе:</h2>
+        <div className={styles.orderFeed__rightContainer}>
+          <div className={styles.orderFeed__orders}>
+            <h2 className="text text_type_main-medium mb-6">
+              {staticStrings[1]}
+            </h2>
+            <h2 className="text text_type_main-medium mb-6">
+              {staticStrings[2]}
+            </h2>
             <ul
-              className={`${styles.ordersDone} text text_type_digits-default`}
+              className={`${styles.orderFeed__ordersDone} text text_type_digits-default`}
             >
               {ordersDone.slice(0, 21).map((item) => {
                 return (
                   <li
-                    className={`${styles.elementList} ${styles.color}`}
+                    className={`${styles.orderFeed__elementList} ${styles.orderFeed__color}`}
                     key={item.number}
                   >
                     {item.number}
@@ -210,11 +228,14 @@ function Feed() {
               })}
             </ul>
             <ul
-              className={`${styles.ordersDone} text text_type_digits-default`}
+              className={`${styles.orderFeed__ordersDone} text text_type_digits-default`}
             >
               {OrdersPending.slice(0, 21).map((item) => {
                 return (
-                  <li className={`${styles.elementList}`} key={item.number}>
+                  <li
+                    className={`${styles.orderFeed__elementList}`}
+                    key={item.number}
+                  >
                     {item.number}
                   </li>
                 );
@@ -222,15 +243,11 @@ function Feed() {
             </ul>
           </div>
           <div>
-            <h2 className="text text_type_main-medium">
-              Выполнено за все время:
-            </h2>
+            <h2 className="text text_type_main-medium">{staticStrings[3]}</h2>
             <p className="text text_type_digits-large">{total}</p>
           </div>
           <div>
-            <h2 className="text text_type_main-medium">
-              Выполнено за сегодня:
-            </h2>
+            <h2 className="text text_type_main-medium">{staticStrings[4]}</h2>
             <p className="text text_type_digits-large">{totalToday}</p>
           </div>
         </div>
@@ -243,6 +260,6 @@ function Feed() {
       )}
     </div>
   );
-}
+};
 
 export default Feed;

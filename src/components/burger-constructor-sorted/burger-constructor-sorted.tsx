@@ -23,7 +23,7 @@ type TDragItem = {
   type: string;
 };
 
-function BurgerConstructorSorted(props: TIngredientSorted) {
+const BurgerConstructorSorted = (props: TIngredientSorted) => {
   const { name, price, image, _id } = props.ing;
   const { index, moveIngredient } = props;
 
@@ -74,7 +74,7 @@ function BurgerConstructorSorted(props: TIngredientSorted) {
   dragRef(drop(ref));
 
   return (
-    <div ref={ref} className={styles.element}>
+    <div ref={ref} className={styles.burgerConstructorSorted__element}>
       <DragIcon type="primary" />
       <ConstructorElement
         text={name}
@@ -84,6 +84,6 @@ function BurgerConstructorSorted(props: TIngredientSorted) {
       />
     </div>
   );
-}
+};
 
 export default BurgerConstructorSorted;

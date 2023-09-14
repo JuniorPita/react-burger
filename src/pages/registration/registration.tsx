@@ -1,4 +1,4 @@
-import styles from "./registration.module.scss";
+/* Общие импорты */
 import {
   EmailInput,
   Button,
@@ -7,11 +7,22 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useRef, FormEvent } from "react";
 import { Link } from "react-router-dom";
-import { registerUser } from "../services/actions/user";
-import { useForm } from "../hooks/useForm";
-import { useAppDispatch } from "../hooks/customHooks";
+import { registerUser } from "../../services/actions/user";
+import { useForm } from "../../hooks/useForm";
+import { useAppDispatch } from "../../hooks/customHooks";
 
-function Registration() {
+/* Стили */
+import styles from "./registration.module.scss";
+
+/* Статичные строки */
+const staticStrings = [
+  "Регистрация",
+  "Зарегистрироваться",
+  "Уже зарегистрированы?",
+  "Войти",
+];
+
+const Registration = () => {
   const dispatch = useAppDispatch();
   const inputRefName = useRef<HTMLInputElement>(null);
   const { values, handleChange } = useForm();
@@ -22,9 +33,11 @@ function Registration() {
   };
 
   return (
-    <form className={styles.content} onSubmit={handlerSubmit}>
-      <h2 className={`text text_type_main-medium ${styles.title}`}>
-        Регистрация
+    <form className={styles.registration__content} onSubmit={handlerSubmit}>
+      <h2
+        className={`text text_type_main-medium ${styles.registration__title}`}
+      >
+        {staticStrings[0]}
       </h2>
       <Input
         type={"text"}
@@ -55,21 +68,21 @@ function Registration() {
         htmlType="submit"
         type="primary"
         size="medium"
-        extraClass={styles.button}
+        extraClass={styles.registration__button}
       >
-        Зарегистрироваться
+        {staticStrings[1]}
       </Button>
       <p
-        className={`text text_type_main-default text_color_inactive ${styles.text}`}
+        className={`text text_type_main-default text_color_inactive ${styles.registration__text}`}
       >
-        Уже зарегистрированы?
-        <Link to="/react-burger/login" className={styles.link}>
+        {staticStrings[2]}
+        <Link to="/react-burger/login" className={styles.registration__link}>
           {" "}
-          Войти
+          {staticStrings[3]}
         </Link>
       </p>
     </form>
   );
-}
+};
 
 export default Registration;

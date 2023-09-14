@@ -1,14 +1,22 @@
 /* Общие импорты */
-/* Стили */
-/* Компоненты */
-
-import styles from "./ingredient-details.module.scss";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { TIngredient } from "../../services/types/types";
 import { useAppSelector } from "../../hooks/customHooks";
 
-function IngredientDetails() {
+/* Стили */
+import styles from "./ingredient-details.module.scss";
+
+/* Статичные строки */
+const staticStrings = [
+  "Детали ингредиента",
+  "Калории, ккал",
+  "Белки, г",
+  "Жиры, г",
+  "Углеводы, г",
+];
+
+const IngredientDetails = () => {
   const { id } = useParams();
   const [ingredient, setElement] = useState<TIngredient | null>(null);
 
@@ -22,40 +30,40 @@ function IngredientDetails() {
   }, [ingredients, id]);
 
   return ingredient ? (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h2 className="text text_type_main-large">Детали ингредиента</h2>
+    <div className={styles.ingredientDetails__container}>
+      <div className={styles.ingredientDetails__header}>
+        <h2 className="text text_type_main-large">{staticStrings[0]}</h2>
       </div>
       <img src={ingredient.image_large} alt={ingredient.name} />
       <p className="text text_type_main-medium mb-8 mt-4">{ingredient.name}</p>
-      <div className={styles.composition}>
-        <div className={styles.calories}>
+      <div className={styles.ingredientDetails__composition}>
+        <div className={styles.ingredientDetails__calories}>
           <p className="text text_type_main-small text_color_inactive">
-            Калории, ккал
+            {staticStrings[1]}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {ingredient.calories}
           </p>
         </div>
-        <div className={styles.elements}>
+        <div className={styles.ingredientDetails__elements}>
           <p className="text text_type_main-small text_color_inactive">
-            Белки, г
+            {staticStrings[2]}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {ingredient.proteins}
           </p>
         </div>
-        <div className={styles.elements}>
+        <div className={styles.ingredientDetails__elements}>
           <p className="text text_type_main-small text_color_inactive">
-            Жиры, г
+            {staticStrings[3]}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {ingredient.fat}
           </p>
         </div>
-        <div className={styles.elements}>
+        <div className={styles.ingredientDetails__elements}>
           <p className="text text_type_main-small text_color_inactive">
-            Углеводы, г
+            {staticStrings[4]}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {ingredient.carbohydrates}
@@ -64,6 +72,6 @@ function IngredientDetails() {
       </div>
     </div>
   ) : null;
-}
+};
 
 export default IngredientDetails;

@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   GET_LIST_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,

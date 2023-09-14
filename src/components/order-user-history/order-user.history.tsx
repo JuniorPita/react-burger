@@ -1,9 +1,5 @@
 /* Общие импорты */
-/* Стили */
-/* Компоненты */
-
 import { useEffect } from "react";
-import styles from "./order-user-history.module.scss";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import {
   WS_CLOSE_CONNECTION_USER,
@@ -20,11 +16,16 @@ import {
   Outlet,
   Location,
 } from "react-router-dom";
-import Modal from "../modal/modal";
-import FeedInfo from "../feed-info/feed-info";
 import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
-function OrdersUserHistory() {
+/* Стили */
+import styles from "./order-user-history.module.scss";
+
+/* Компоненты */
+import Modal from "../modal/modal";
+import FeedInfo from "../feed-info/feed-info";
+
+const OrdersUserHistory = () => {
   const params = useParams();
   const location: Location = useLocation();
   const background: boolean = location.state?.background;
@@ -72,8 +73,8 @@ function OrdersUserHistory() {
   return params.id && !background ? (
     <Outlet />
   ) : (
-    <div className={styles.container}>
-      <ul className={styles.list}>
+    <div className={styles.orderUser__container}>
+      <ul className={styles.orderUser__list}>
         {orders.map((order) => {
           const _id = order._id;
           const status =
@@ -91,7 +92,7 @@ function OrdersUserHistory() {
               : orderDate.getMinutes();
           return (
             <li
-              className={styles.element}
+              className={styles.orderUser__element}
               key={_id}
               onClick={() => {
                 navigate(`/react-burger/profile/orders/${_id}`, {
@@ -100,7 +101,7 @@ function OrdersUserHistory() {
                 openModal();
               }}
             >
-              <div className={styles.header}>
+              <div className={styles.orderUser__header}>
                 <p className="text text_type_digits-default mb-6">
                   #{order.number}
                 </p>
@@ -119,14 +120,14 @@ function OrdersUserHistory() {
               <p
                 className={
                   status === "Выполнен"
-                    ? `${styles.color} text text_type_main-default mb-6`
+                    ? `${styles.orderUser__color} text text_type_main-default mb-6`
                     : "text text_type_main-default mb-6"
                 }
               >
                 {status}
               </p>
-              <div className={styles.footer}>
-                <ul className={styles.ingredients}>
+              <div className={styles.orderUser__footer}>
+                <ul className={styles.orderUser__ingredients}>
                   {order.ingredients.map((ingredient, index) => {
                     if (ingredient !== null) {
                       if (index > 0 && index <= 5) {
@@ -134,7 +135,7 @@ function OrdersUserHistory() {
                           <li
                             key={uuidv4()}
                             style={{ zIndex: index }}
-                            className={styles.ingredient}
+                            className={styles.orderUser__ingredient}
                           >
                             <img
                               src={
@@ -145,7 +146,7 @@ function OrdersUserHistory() {
                                 ingredients?.find((el) => el._id === ingredient)
                                   ?.name
                               }
-                              className={styles.image}
+                              className={styles.orderUser__image}
                             />
                           </li>
                         );
@@ -156,9 +157,9 @@ function OrdersUserHistory() {
                             <li
                               key={uuidv4()}
                               style={{ zIndex: index }}
-                              className={`${styles.ingredient} ${styles.last}`}
+                              className={`${styles.orderUser__ingredient} ${styles.orderUser__last}`}
                             >
-                              <p className={`${styles.text}`}>
+                              <p className={`${styles.orderUser__text}`}>
                                 +{order.ingredients.length - 5}
                               </p>
                               <img
@@ -172,7 +173,7 @@ function OrdersUserHistory() {
                                     (el) => el._id === ingredient
                                   )?.name
                                 }
-                                className={styles.image}
+                                className={styles.orderUser__image}
                               />
                             </li>
                           );
@@ -181,7 +182,7 @@ function OrdersUserHistory() {
                     }
                   })}
                 </ul>
-                <div className={styles.price}>
+                <div className={styles.orderUser__price}>
                   <p className="text text_type_digits-default">
                     {totalPrice(order.ingredients)}
                   </p>
@@ -200,6 +201,6 @@ function OrdersUserHistory() {
       )}
     </div>
   );
-}
+};
 
 export default OrdersUserHistory;

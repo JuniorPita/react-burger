@@ -1,17 +1,18 @@
 /* Общие импорты */
-/* Стили */
-/* Компоненты */
-
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./modal.module.scss";
-import ModalOverlay from "../modal-overlay/modal-overlay";
 import { TModal } from "../../services/types/types";
+
+/* Стили */
+import styles from "./modal.module.scss";
+
+/* Компоненты */
+import ModalOverlay from "../modal-overlay/modal-overlay";
 
 const modalRoot: HTMLElement | null = document.getElementById("react-modals");
 
-function Modal({ children, onClosePopup }: TModal) {
+const Modal = ({ children, onClosePopup }: TModal) => {
   useEffect(() => {
     const closeByEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -33,7 +34,7 @@ function Modal({ children, onClosePopup }: TModal) {
   return createPortal(
     <ModalOverlay onClosePopup={onClosePopup}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.buttonClose} onClick={onClosePopup}>
+        <button className={styles.modal__buttonClose} onClick={onClosePopup}>
           <CloseIcon type="primary" />
         </button>
         {children}
@@ -41,6 +42,6 @@ function Modal({ children, onClosePopup }: TModal) {
     </ModalOverlay>,
     modalRoot
   );
-}
+};
 
 export default Modal;

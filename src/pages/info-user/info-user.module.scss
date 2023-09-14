@@ -1,0 +1,15 @@
+// Стили для InfoUser
+.infoUser {
+  &__buttons {
+    display: flex;
+    justify-content: end;
+    margin-top: 24px;
+  }
+
+  &__container {
+    padding: 120px 0 120px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

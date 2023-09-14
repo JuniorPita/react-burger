@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { getCookie } from "../../utils/cookieFunction";
 import {
   AppThunk,

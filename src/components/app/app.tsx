@@ -11,15 +11,15 @@ import LogoutUserRoute from "../logout-user-route/logout-user-route";
 /* Компоненты */
 import AppHeader from "../app-header/app-header";
 import Main from "../main/main";
-import Login from "../../pages/login";
-import Registration from "../../pages/registration";
-import PasswordForgot from "../../pages/password-forgot";
-import PasswordReset from "../../pages/password-reset";
-import Profile from "../../pages/profile";
-import UserInfo from "../../pages/info-user";
-import IngredientsPage from "../../pages/ingredients";
-import ErrorPage from "../../pages/not-found";
-import Feed from "../../pages/order-feed";
+import Login from "../../pages/login/login";
+import Registration from "../../pages/registration/registration";
+import PasswordForgot from "../../pages/password-forgot/password-forgot";
+import PasswordReset from "../../pages/password-reset/password-reset";
+import Profile from "../../pages/profile/profile";
+import UserInfo from "../../pages/info-user/info-user";
+import IngredientsPage from "../../pages/ingredients/ingredients";
+import ErrorPage from "../../pages/not-found/not-found";
+import Feed from "../../pages/order-feed/order-feed";
 import FeedInfo from "../feed-info/feed-info";
 import OrdersUserHistory from "../order-user-history/order-user.history";
 

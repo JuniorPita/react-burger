@@ -1,0 +1,50 @@
+// Стили для Profile
+.profile {
+  &__content {
+    display: flex;
+    column-gap: 60px;
+    margin: 100px auto 0;
+    max-width: fit-content;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+  }
+
+  &__list {
+    margin: 0 0 80px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__element {
+    margin: 17px 0 17px;
+  }
+
+  &__link {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #8585ad;
+  }
+
+  &__activeLink {
+    display: flex;
+    column-gap: 8px;
+    text-decoration: none;
+    color: #f2f2f3;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    color: #8585ad;
+    cursor: pointer;
+  }
+}

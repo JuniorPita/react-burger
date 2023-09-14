@@ -1,3 +1,4 @@
+/* Общие импорты */
 import {
   GET_NUMBER_ORDER,
   GET_NUMBER_ORDER_SUCCESS,

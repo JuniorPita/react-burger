@@ -1,3 +1,4 @@
+/* Общие импорты */
 import { TOrder } from "../types/types";
 
 export const WS_CONNECTION_START_USER: "WS_CONNECTION_START_USER" =
