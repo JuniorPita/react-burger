@@ -22,7 +22,7 @@ import styles from "./order-feed.module.scss";
 
 /* Компоненты */
 import Modal from "../../components/modal/modal";
-import FeedInfo from "../../components/feed-information/feed-information";
+import FeedInfo from "../../components/feed-info/feed-info";
 
 /* Статичные строки */
 const staticStrings = [

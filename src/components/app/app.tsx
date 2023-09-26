@@ -20,8 +20,8 @@ import UserInfo from "../../pages/info-user/info-user";
 import IngredientsPage from "../../pages/ingredients/ingredients";
 import ErrorPage from "../../pages/not-found/not-found";
 import Feed from "../../pages/order-feed/order-feed";
-import FeedInfo from "../feed-information/feed-information";
-import OrdersUserHistory from "../order-history/order-history";
+import FeedInfo from "../feed-info/feed-info";
+import OrdersUserHistory from "../order-history-info/order-history-info";
 
 const App = () => {
   const dispatch = useAppDispatch();

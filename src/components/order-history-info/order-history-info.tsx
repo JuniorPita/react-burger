@@ -19,11 +19,11 @@ import {
 import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
 /* Стили */
-import styles from "./order-history.module.scss";
+import styles from "./order-history-info.module.scss";
 
 /* Компоненты */
 import Modal from "../modal/modal";
-import FeedInfo from "../feed-information/feed-information";
+import FeedInfo from "../feed-info/feed-info";
 
 const OrdersUserHistory = () => {
   const params = useParams();

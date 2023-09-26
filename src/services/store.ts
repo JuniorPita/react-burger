@@ -3,7 +3,7 @@ import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { rootReducer } from "./reducers";
-import { socketMiddleware } from "./middleware/socketMiddleware";
+import { socketMiddleware } from "./middleware/socketBaseMiddleWare";
 import {
   WS_CONNECTION_START,
   WS_CONNECTION_SUCCESS,
