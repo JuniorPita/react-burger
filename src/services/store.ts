@@ -3,7 +3,7 @@ import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { rootReducer } from "./reducers";
-import { socketMiddleware } from "./middleware/socketBaseMiddleWare";
+import { socketMiddleware } from "./middleware/socketMW";
 import {
   WS_CONNECTION_START,
   WS_CONNECTION_SUCCESS,
@@ -11,7 +11,7 @@ import {
   WS_CONNECTION_CLOSED,
   WS_GET_MESSAGE,
   WS_CLOSE_CONNECTION,
-} from "./actions/websocket-base";
+} from "./actions/webSocketBase";
 import {
   WS_CLOSE_CONNECTION_USER,
   WS_CONNECTION_CLOSED_USER,
@@ -19,7 +19,7 @@ import {
   WS_CONNECTION_START_USER,
   WS_CONNECTION_SUCCESS_USER,
   WS_GET_MESSAGE_USER,
-} from "./actions/websocket-for-user";
+} from "./actions/webSocketUser";
 
 const wsActions = {
   wsStart: WS_CONNECTION_START,
