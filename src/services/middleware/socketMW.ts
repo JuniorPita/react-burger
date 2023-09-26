@@ -1,9 +1,3 @@
-/**
- * Код был добавлен ещё в старом пулл-реквесте,
- * задание сделано ранее из-за перехода по когортам и изучения вебсокетов,
- * благодаря коллегам с работы, что прошли дальше курс
- */
-
 /* Общие импорты */
 import { Middleware, MiddlewareAPI } from "redux";
 import { AppDispatch, RootState, TwsActions } from "../types/types";
