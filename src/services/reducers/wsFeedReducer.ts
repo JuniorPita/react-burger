@@ -5,7 +5,7 @@ import {
   WS_CONNECTION_CLOSED,
   WS_GET_MESSAGE,
   TWebSocketActions,
-} from "../actions/websocket";
+} from "../actions/websocket-base";
 import { TOrder } from "../types/types";
 
 type TWebSocketState = {

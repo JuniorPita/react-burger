@@ -5,7 +5,7 @@ import {
   WS_CONNECTION_SUCCESS_USER,
   WS_GET_MESSAGE_USER,
   TWebSocketUserActions,
-} from "../actions/websocket-user";
+} from "../actions/websocket-for-user";
 import { TOrder } from "../types/types";
 
 type TWebSocketUserState = {

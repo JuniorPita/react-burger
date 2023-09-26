@@ -4,7 +4,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import {
   WS_CLOSE_CONNECTION_USER,
   WS_CONNECTION_START_USER,
-} from "../../services/actions/websocket-user";
+} from "../../services/actions/websocket-for-user";
 import { getCookie } from "../../utils/cookieFunction";
 import { diffToString, diffDays } from "../../utils";
 import { v4 as uuidv4 } from "uuid";
@@ -19,11 +19,11 @@ import {
 import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
 /* Стили */
-import styles from "./order-user-history.module.scss";
+import styles from "./order-history.module.scss";
 
 /* Компоненты */
 import Modal from "../modal/modal";
-import FeedInfo from "../feed-info/feed-info";
+import FeedInfo from "../feed-information/feed-information";
 
 const OrdersUserHistory = () => {
   const params = useParams();

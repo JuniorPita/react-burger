@@ -3,7 +3,7 @@ import { useEffect, useMemo } from "react";
 import {
   WS_CLOSE_CONNECTION,
   WS_CONNECTION_START,
-} from "../../services/actions/websocket";
+} from "../../services/actions/websocket-base";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import {
   Outlet,
@@ -22,7 +22,7 @@ import styles from "./order-feed.module.scss";
 
 /* Компоненты */
 import Modal from "../../components/modal/modal";
-import FeedInfo from "../../components/feed-info/feed-info";
+import FeedInfo from "../../components/feed-information/feed-information";
 
 /* Статичные строки */
 const staticStrings = [

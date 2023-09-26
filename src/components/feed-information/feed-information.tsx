@@ -8,7 +8,7 @@ import { useAppSelector } from "../../hooks/customHooks";
 import { TIngredient, TOrder } from "../../services/types/types";
 
 /* Стили */
-import styles from "./feed-info.module.scss";
+import styles from "./feed-information.module.scss";
 
 const FeedInfo = () => {
   const { id } = useParams<{ id: string }>();

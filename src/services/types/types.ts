@@ -19,8 +19,8 @@ import {
   TRestorePasswordActions,
   TUpdateTokenActions,
 } from "../actions/user";
-import { TWebSocketActions } from "../actions/websocket";
-import { TWebSocketUserActions } from "../actions/websocket-user";
+import { TWebSocketActions } from "../actions/websocket-base";
+import { TWebSocketUserActions } from "../actions/websocket-for-user";
 
 export type TIngredient = {
   _id: string;
