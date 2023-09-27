@@ -5,8 +5,8 @@ import { burgerConstructorReducer } from "../reducers/burgerConstructorReducer";
 import { ingredientDetailsReducer } from "./ingredientDetailsReducer";
 import { orderReducer } from "./orderReducer";
 import { userReducer } from "./userReducer";
-import { wsFeedReducer } from "./wsFeedReducer";
-import { wsFeedUserReducer } from "./wsFeedUserReducer";
+import { wsFeedReducer } from "./webSocketFeedReducer";
+import { wsFeedUserReducer } from "./webSocketFeedUserReducer";
 
 export const rootReducer = combineReducers({
   ingredients: getIngredientsReducer,
