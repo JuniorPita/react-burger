@@ -14,7 +14,6 @@ import {
 } from "react-router-dom";
 import { useModal } from "../../hooks/useModal";
 import { diffToString, diffDays } from "../../utils";
-import { v4 as uuidv4 } from "uuid";
 import { useAppDispatch, useAppSelector } from "../../hooks/customHooks";
 
 /* Стили */
@@ -109,7 +108,7 @@ const Feed = () => {
               return (
                 <li
                   className={styles.orderFeed__orderElement}
-                  key={uuidv4()}
+                  key={_id}
                   onClick={() => {
                     navigate(`/react-burger/feed/${_id}`, {
                       state: { background: true },
@@ -142,7 +141,7 @@ const Feed = () => {
                           if (index > 0 && index <= 5) {
                             return (
                               <li
-                                key={uuidv4()}
+                                key={_id}
                                 style={{ zIndex: index }}
                                 className={styles.orderFeed__imgElement}
                               >
@@ -166,7 +165,7 @@ const Feed = () => {
                             if (index === 0) {
                               return (
                                 <li
-                                  key={uuidv4()}
+                                  key={_id}
                                   style={{ zIndex: index }}
                                   className={`${styles.orderFeed__imgElement} ${styles.orderFeed__last}`}
                                 >

@@ -1,7 +1,6 @@
 /* Общие импорты */
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { diffToString, diffDays } from "../../utils";
-import { v4 as uuidv4 } from "uuid";
 import { useLocation, useParams, Location } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/customHooks";
@@ -85,7 +84,7 @@ const FeedInfo = () => {
               (el: TIngredient) => el._id === ing
             )?.price;
             return (
-              <li key={uuidv4()} className={styles.feedInfo__ingredients}>
+              <li key={i} className={styles.feedInfo__ingredients}>
                 <div className={styles.feedInfo__ingredientInfo}>
                   <img
                     src={

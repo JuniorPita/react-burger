@@ -7,7 +7,6 @@ import {
 } from "../../services/actions/webSocketUser";
 import { getCookie } from "../../utils/cookieFunction";
 import { diffToString, diffDays } from "../../utils";
-import { v4 as uuidv4 } from "uuid";
 import { useModal } from "../../hooks/useModal";
 import {
   useLocation,
@@ -133,7 +132,7 @@ const OrdersUserHistory = () => {
                       if (index > 0 && index <= 5) {
                         return (
                           <li
-                            key={uuidv4()}
+                            key={index}
                             style={{ zIndex: index }}
                             className={styles.orderUser__ingredient}
                           >
@@ -155,7 +154,7 @@ const OrdersUserHistory = () => {
                         if (index === 0) {
                           return (
                             <li
-                              key={uuidv4()}
+                              key={index}
                               style={{ zIndex: index }}
                               className={`${styles.orderUser__ingredient} ${styles.orderUser__last}`}
                             >
