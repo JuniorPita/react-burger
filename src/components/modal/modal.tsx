@@ -33,8 +33,16 @@ const Modal = ({ children, onClosePopup }: TModal) => {
 
   return createPortal(
     <ModalOverlay onClosePopup={onClosePopup}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.modal__buttonClose} onClick={onClosePopup}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        data-cy="modal-wrapper"
+      >
+        <button
+          className={styles.modal__buttonClose}
+          onClick={onClosePopup}
+          data-cy="modal-close-button"
+        >
           <CloseIcon type="primary" />
         </button>
         {children}

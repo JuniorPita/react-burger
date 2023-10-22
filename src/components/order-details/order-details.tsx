@@ -18,11 +18,13 @@ type TOrderDetails = {
 
 const OrderDetails = ({ numberOrder, loader }: TOrderDetails) => {
   return (
-    <div className={styles.orderDetails__container}>
+    <div className={styles.orderDetails__container} data-cy="order-details">
       {loader ? (
         <Loader />
       ) : (
-        <p className="text text_type_digits-large">{numberOrder}</p>
+        <p className="text text_type_digits-large" data-cy="order-number">
+          {numberOrder}
+        </p>
       )}
       <p className="text text_type_main-medium mt-8 mb-15">
         {staticStrings[0]}
