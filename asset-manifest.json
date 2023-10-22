@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.2d99e9cd.css",
+    "main.js": "./static/js/main.60dc430d.js",
+    "static/js/787.2b4cbca8.chunk.js": "./static/js/787.2b4cbca8.chunk.js",
+    "static/media/404.jpg": "./static/media/404.d0394d92de2aa360c744.jpg",
+    "static/media/JetBrainsMono-Regular.ttf": "./static/media/JetBrainsMono-Regular.be594ccdd8a8dd0ed5db.ttf",
+    "static/media/JetBrainsMono-Bold.ttf": "./static/media/JetBrainsMono-Bold.a0394baa305e2ce71971.ttf",
+    "static/media/JetBrainsMono-Bold.woff": "./static/media/JetBrainsMono-Bold.3914674f1cb2335acf26.woff",
+    "static/media/JetBrainsMono-Regular.woff": "./static/media/JetBrainsMono-Regular.f52bee61d00ce995b89f.woff",
+    "static/media/JetBrainsMono-Bold.woff2": "./static/media/JetBrainsMono-Bold.c232d532ea5a5189a278.woff2",
+    "static/media/JetBrainsMono-Regular.woff2": "./static/media/JetBrainsMono-Regular.b60380891bcf2eb241ca.woff2",
+    "static/media/Iceland-Regular.ttf": "./static/media/Iceland-Regular.7e45c1c08b547e6668ab.ttf",
+    "static/media/iceland.woff": "./static/media/iceland.77ad7fc2baffd9305538.woff",
+    "static/media/order.png": "./static/media/order.54f842c2a5c88e7ca791.png",
+    "static/media/iceland.woff2": "./static/media/iceland.4ae67a017a5ff82bbbb7.woff2",
+    "static/media/diamond.svg": "./static/media/diamond.d32d4bcb31918871f2ab.svg",
+    "index.html": "./index.html",
+    "main.2d99e9cd.css.map": "./static/css/main.2d99e9cd.css.map",
+    "main.60dc430d.js.map": "./static/js/main.60dc430d.js.map",
+    "787.2b4cbca8.chunk.js.map": "./static/js/787.2b4cbca8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d99e9cd.css",
+    "static/js/main.60dc430d.js"
+  ]
+}
