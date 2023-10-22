@@ -8,7 +8,7 @@ import {
 } from "../actions/webSocketUser";
 import { TOrder } from "../types/types";
 
-type TWebSocketUserState = {
+export type TWebSocketUserState = {
   wsConnected: boolean;
   orders: TOrder[];
 };

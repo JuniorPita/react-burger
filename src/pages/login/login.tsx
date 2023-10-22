@@ -39,7 +39,11 @@ const Login = () => {
   }
 
   return (
-    <form className={styles.login__content} onSubmit={handlerSubmit}>
+    <form
+      className={styles.login__content}
+      onSubmit={handlerSubmit}
+      data-cy="login-form"
+    >
       <h2 className={`text text_type_main-medium ${styles.login__title}`}>
         {staticStrings[0]}
       </h2>
@@ -49,18 +53,21 @@ const Login = () => {
         name={"email"}
         isIcon={false}
         extraClass="mt-6"
+        data-cy="email-input"
       />
       <PasswordInput
         onChange={handleChange}
         value={values.password}
         name={"password"}
         extraClass="mt-6 mb-6"
+        data-cy="password-input"
       />
       <Button
         htmlType="submit"
         type="primary"
         size="medium"
         extraClass={styles.login__button}
+        data-cy="submit"
       >
         {staticStrings[1]}
       </Button>
@@ -68,7 +75,11 @@ const Login = () => {
         className={`text text_type_main-default text_color_inactive ${styles.login__text}`}
       >
         {staticStrings[2]}
-        <Link to="/react-burger/register" className={styles.login__link}>
+        <Link
+          to="/react-burger/register"
+          className={styles.login__link}
+          data-cy="go-register-button"
+        >
           {" "}
           {staticStrings[3]}
         </Link>
