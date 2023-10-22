@@ -9,7 +9,7 @@ import {
 } from "../actions";
 import { TConstructorIngredient, TIngredient } from "../types/types";
 
-type TBurgerConstructorState = {
+export type TBurgerConstructorState = {
   ingredients: TConstructorIngredient[];
   bun: TIngredient[];
 };

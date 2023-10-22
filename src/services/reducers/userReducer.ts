@@ -35,7 +35,7 @@ import {
   TPatchUserActions,
 } from "../actions/user";
 
-type TUserActions = {
+export type TUserActions = {
   loading: boolean;
   success: boolean;
   email: string;

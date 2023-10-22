@@ -6,7 +6,7 @@ import {
 } from "../actions";
 import { TIngredient } from "../types/types";
 
-type TIngredientDetailsState = {
+export type TIngredientDetailsState = {
   selectedIngredient: { data: TIngredient | null };
 };
 

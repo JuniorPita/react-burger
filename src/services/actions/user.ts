@@ -40,30 +40,30 @@ export const PATCH_USER_REQUEST: "PATCH_USER_REQUEST" = "PATCH_USER_REQUEST";
 export const PATCH_USER_SUCCESS: "PATCH_USER_SUCCESS" = "PATCH_USER_SUCCESS";
 export const PATCH_USER_FAILED: "PATCH_USER_FAILED" = "PATCH_USER_FAILED";
 
-type TRestorePasswordRequest = {
+export type TRestorePasswordRequest = {
   readonly type: typeof RESTORE_PASSWORD_REQUEST;
 };
 
-type TRestorePasswordSuccess = {
+export type TRestorePasswordSuccess = {
   readonly type: typeof RESTORE_PASSWORD_SUCCESS;
   success: boolean;
 };
 
-type TRestorePasswordFailed = {
+export type TRestorePasswordFailed = {
   readonly type: typeof RESTORE_PASSWORD_FAILED;
   error: string;
 };
 
-type TResetSuccess = {
+export type TResetSuccess = {
   readonly type: typeof SUCCESS_RESET;
   success: boolean;
 };
 
-type TRegisterUserRequest = {
+export type TRegisterUserRequest = {
   readonly type: typeof REGISTER_USER_REQUEST;
 };
 
-type TRegisterUserSuccess = {
+export type TRegisterUserSuccess = {
   readonly type: typeof REGISTER_USER_SUCCESS;
   success: boolean;
   email: string;
@@ -72,30 +72,30 @@ type TRegisterUserSuccess = {
   refreshToken: string;
 };
 
-type TRegisterUserFailed = {
+export type TRegisterUserFailed = {
   readonly type: typeof REGISTER_USER_FAILED;
   error: string;
 };
 
-type TResetPasswordRequest = {
+export type TResetPasswordRequest = {
   readonly type: typeof RESET_PASSWORD_REQUEST;
 };
 
-type TResetPasswordSuccess = {
+export type TResetPasswordSuccess = {
   readonly type: typeof RESET_PASSWORD_SUCCESS;
   reset: boolean;
 };
 
-type TResetPasswordFailed = {
+export type TResetPasswordFailed = {
   readonly type: typeof RESET_PASSWORD_FAILED;
   error: string;
 };
 
-type TLoginRequest = {
+export type TLoginRequest = {
   readonly type: typeof LOGIN_REQUEST;
 };
 
-type TLoginSuccess = {
+export type TLoginSuccess = {
   readonly type: typeof LOGIN_SUCCESS;
   authorizedUser: boolean;
   accessToken: string;
@@ -105,70 +105,70 @@ type TLoginSuccess = {
   success: boolean;
 };
 
-type TLoginFailed = {
+export type TLoginFailed = {
   readonly type: typeof LOGIN_FAILED;
   error: string;
 };
 
-type TUpdateTokenRequest = {
+export type TUpdateTokenRequest = {
   readonly type: typeof UPDATE_TOKEN_REQUEST;
 };
 
-type TUpdateTokenSuccess = {
+export type TUpdateTokenSuccess = {
   readonly type: typeof UPDATE_TOKEN_SUCCESS;
   accessToken: string;
   refreshToken: string;
 };
 
-type TUpdateTokenFailed = {
+export type TUpdateTokenFailed = {
   readonly type: typeof UPDATE_TOKEN_FAILED;
   error: string;
 };
 
-type TGetUserRequest = {
+export type TGetUserRequest = {
   readonly type: typeof GET_USER_REQUEST;
 };
 
-type TGetUserSuccess = {
+export type TGetUserSuccess = {
   readonly type: typeof GET_USER_SUCCESS;
   email: string;
   name: string;
   success: boolean;
 };
 
-type TGetUserFailed = {
+export type TGetUserFailed = {
   readonly type: typeof GET_USER_FAILED;
   error: string;
 };
 
-type TLogoutRequest = {
+export type TLogoutRequest = {
   readonly type: typeof LOGOUT_REQUEST;
 };
 
-type TLogoutSuccess = {
+export type TLogoutSuccess = {
   readonly type: typeof LOGOUT_SUCCESS;
   accessToken: string;
   refreshToken: string;
   success: boolean;
 };
 
-type TLogoutFailed = {
+export type TLogoutFailed = {
   readonly type: typeof LOGOUT_FAILED;
   error: string;
 };
 
-type TPatchUserRequest = {
+export type TPatchUserRequest = {
   readonly type: typeof PATCH_USER_REQUEST;
 };
 
-type TPatchUserSuccess = {
+export type TPatchUserSuccess = {
   readonly type: typeof PATCH_USER_SUCCESS;
   email: string;
   name: string;
   success: boolean;
 };
 
-type TPatchUserFailed = {
+export type TPatchUserFailed = {
   readonly type: typeof PATCH_USER_FAILED;
   error: string;
 };
