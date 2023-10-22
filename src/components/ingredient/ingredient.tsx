@@ -51,7 +51,6 @@ const Ingredient = ({ ingredient, openModal }: TIngredientProps) => {
       }}
       draggable
       ref={dragRef}
-      data-cy={`${type}-ingredient-item`}
     >
       {count !== 0 && <Counter count={count} size="default" extraClass="m-1" />}
       <img src={image} alt={name} />

@@ -30,10 +30,7 @@ const IngredientDetails = () => {
   }, [ingredients, id]);
 
   return ingredient ? (
-    <div
-      className={styles.ingredientDetails__container}
-      data-cy="ingredient-details"
-    >
+    <div className={styles.ingredientDetails__container}>
       <div className={styles.ingredientDetails__header}>
         <h2 className="text text_type_main-large">{staticStrings[0]}</h2>
       </div>

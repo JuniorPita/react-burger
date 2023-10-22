@@ -152,15 +152,11 @@ const BurgerConstructor = () => {
       className={styles.burgerConstructor__content}
       ref={dropRef}
       style={{ outlineColor }}
-      data-cy="burger-constructor-dropzone"
     >
-      <div
-        className={styles.burgerConstructor__borderElement}
-        data-cy="bun-top"
-      >
+      <div className={styles.burgerConstructor__borderElement}>
         {bunUpper[numberBun]}
       </div>
-      <ul className={styles.burgerConstructor__list} data-cy="ingredients">
+      <ul className={styles.burgerConstructor__list}>
         {ingredients.map((ing, index) => {
           ing.index = index;
           return (
@@ -174,9 +170,7 @@ const BurgerConstructor = () => {
           );
         })}
       </ul>
-      <div className="pl-8 mt-4" data-cy="bun-bottom">
-        {bunBottom[numberBun]}
-      </div>
+      <div className="pl-8 mt-4">{bunBottom[numberBun]}</div>
       <div className={styles.burgerConstructor__order}>
         <div className={styles.burgerConstructor__resultSum}>
           {bun.length < 1 ? (
@@ -201,7 +195,6 @@ const BurgerConstructor = () => {
             onClickHandler();
           }}
           disabled={disabled}
-          data-cy="submit-order"
         >
           {staticStrings[2]}
         </Button>

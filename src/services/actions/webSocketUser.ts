@@ -13,7 +13,7 @@ export const WS_GET_MESSAGE_USER: "WS_GET_MESSAGE_USER" = "WS_GET_MESSAGE_USER";
 export const WS_CLOSE_CONNECTION_USER: "WS_CLOSE_CONNECTION_USER" =
   "WS_CLOSE_CONNECTION_USER";
 
-export type TWsUserPayload = {
+type TWsUserPayload = {
   orders: TOrder[];
   total: number;
   totalToday: number;

@@ -10,7 +10,7 @@ export const WS_CONNECTION_CLOSED: "WS_CONNECTION_CLOSED" =
 export const WS_GET_MESSAGE: "WS_GET_MESSAGE" = "WS_GET_MESSAGE";
 export const WS_CLOSE_CONNECTION: "WS_CLOSE_CONNECTION" = "WS_CLOSE_CONNECTION";
 
-export type TWsPayload = {
+type TWsPayload = {
   orders: TOrder[];
   total: number;
   totalToday: number;

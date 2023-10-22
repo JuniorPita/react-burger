@@ -121,7 +121,6 @@ const BurgerIngredients = () => {
         className={styles.burgerIngredients__components}
         ref={container}
         onScroll={handleScroll}
-        data-cy="ingredients-menu"
       >
         <h2 className="text text_type_main-medium mt-10 mb-6" ref={bunsRef}>
           {staticStrings[1]}

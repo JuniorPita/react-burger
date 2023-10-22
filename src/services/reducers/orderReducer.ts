@@ -6,7 +6,7 @@ import {
   TGetNumberOrderActions,
 } from "../actions";
 
-export type TGetNumberOrderState = {
+type TGetNumberOrderState = {
   order: number;
   loading: boolean;
   failed: boolean;

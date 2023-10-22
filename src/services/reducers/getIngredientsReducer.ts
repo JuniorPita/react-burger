@@ -7,7 +7,7 @@ import {
 } from "../actions";
 import { TIngredient } from "../types/types";
 
-export type TGetIngredientsState = {
+type TGetIngredientsState = {
   data: Array<TIngredient> | null;
   loading: boolean;
 };
