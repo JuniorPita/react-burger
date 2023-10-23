@@ -1,3 +1,6 @@
+GitHub Pages
+https://juniorpita.github.io/react-burger/
+
 test new branch month-8/step-2
 
 # Getting Started with Create React App
